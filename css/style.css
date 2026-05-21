@@ -150,7 +150,7 @@ img {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 24px 0;
+  padding: 16px 0;
   transition: all 0.4s ease;
   background: transparent;
 }
@@ -159,7 +159,7 @@ img {
   background: rgba(249, 248, 245, 0.95);
   backdrop-filter: blur(20px);
   box-shadow: 0 4px 30px rgba(140, 106, 46, 0.05);
-  padding: 14px 0;
+  padding: 10px 0;
   border-bottom: 1px solid rgba(197, 160, 89, 0.08);
 }
 
@@ -180,11 +180,15 @@ img {
 }
 
 .logo img {
-  height: 50px;
+  height: 42px;
   width: auto;
   object-fit: contain;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: block;
+}
+
+.navbar.scrolled .logo img {
+  height: 34px;
 }
 
 .logo:hover img {
@@ -1352,13 +1356,16 @@ img {
 
 @media(max-width: 768px) {
   .navbar {
-    padding: 16px 0;
+    padding: 8px 0;
   }
   .navbar.scrolled {
-    padding: 10px 0;
+    padding: 6px 0;
   }
   .logo img {
-    height: 38px;
+    height: 30px;
+  }
+  .navbar.scrolled .logo img {
+    height: 26px;
   }
 
   .nav-links {
