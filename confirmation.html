@@ -49,8 +49,8 @@
         <strong id="confType">—</strong>
       </div>
       <div class="confirm-detail-item">
-        <span>💰 Total Paid</span>
-        <strong id="confTotal" style="color:var(--gold)">—</strong>
+        <span>📋 Inquiry Status</span>
+        <strong id="confTotal" style="color:var(--gold)">Pending Availability Check</strong>
       </div>
     </div>
 
@@ -80,7 +80,7 @@ if(data.ref){
   document.getElementById('confDate').textContent = data.date ? new Date(data.date).toLocaleDateString('en-IN',{dateStyle:'long'}) : '—';
   document.getElementById('confGuests').textContent = data.guests ? data.guests + ' guests' : '—';
   document.getElementById('confType').textContent = data.type || '—';
-  document.getElementById('confTotal').textContent = data.total || '—';
+  document.getElementById('confTotal').textContent = 'Inquiry Submitted';
   document.getElementById('confEmail').textContent = data.email || '—';
   document.title = `Booking ${data.ref} Confirmed – Sampada Festivity`;
 } else {
@@ -91,7 +91,7 @@ if(data.ref){
   document.getElementById('confDate').textContent = '15 June 2026';
   document.getElementById('confGuests').textContent = '200 guests';
   document.getElementById('confType').textContent = 'Wedding';
-  document.getElementById('confTotal').textContent = '₹1,11,750';
+  document.getElementById('confTotal').textContent = 'Inquiry Submitted';
   document.getElementById('confEmail').textContent = 'guest@example.com';
 }
 </script>

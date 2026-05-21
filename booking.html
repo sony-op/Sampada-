@@ -106,7 +106,6 @@
               <div class="allied-opt-details">
                 <span class="allied-opt-title">🌸 Luxury Floral Decoration</span>
                 <span class="allied-opt-desc">Premium entry setup, stage, garlands and lights</span>
-                <span class="allied-opt-price">+ ₹80,000</span>
               </div>
             </label>
             <label class="allied-opt-card">
@@ -114,7 +113,6 @@
               <div class="allied-opt-details">
                 <span class="allied-opt-title">🍽️ Royal Catering Services</span>
                 <span class="allied-opt-desc">Global menus, elite buffet and waiters</span>
-                <span class="allied-opt-price">+ ₹1,200 / plate</span>
               </div>
             </label>
             <label class="allied-opt-card">
@@ -122,7 +120,6 @@
               <div class="allied-opt-details">
                 <span class="allied-opt-title">✨ Elite Wedding Planning</span>
                 <span class="allied-opt-desc">Dedicated coordinator and timeline manager</span>
-                <span class="allied-opt-price">+ ₹40,000</span>
               </div>
             </label>
             <label class="allied-opt-card">
@@ -130,48 +127,20 @@
               <div class="allied-opt-details">
                 <span class="allied-opt-title">📸 Cinematic Photography</span>
                 <span class="allied-opt-desc">Candid photos, video reels and pre-wedding shoots</span>
-                <span class="allied-opt-price">+ ₹60,000</span>
               </div>
             </label>
           </div>
         </div>
 
-        <!-- Step 3: Payment -->
+        <!-- Step 3: Inquiry Submission -->
         <div class="booking-form-card">
-          <div class="form-section-title">03 · Payment Method</div>
-          <div class="payment-methods">
-            <div class="pay-method active" onclick="selectPay(this)">💳 Credit/Debit Card</div>
-            <div class="pay-method" onclick="selectPay(this)">🏦 Net Banking</div>
-            <div class="pay-method" onclick="selectPay(this)">📱 UPI</div>
-            <div class="pay-method" onclick="selectPay(this)">💰 Pay at Venue</div>
+          <div class="form-section-title">03 · Confirm Inquiry</div>
+          <p style="font-size:14px;color:var(--text-muted);margin-bottom:16px;line-height:1.4;">Submit your booking inquiry details. Our dedicated event manager will check the venue availability for your selected date and contact you within 24 hours to proceed.</p>
+          <div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:16px;font-size:13px;color:var(--text-muted);">
+            🤝 No booking charges are due right now. Complete details will be shared over call.
           </div>
-          <div id="cardFields">
-            <div class="form-group">
-              <label>Card Number</label>
-              <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" id="cardNum" oninput="formatCard(this)"/>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Expiry Date</label>
-                <input type="text" placeholder="MM/YY" maxlength="5"/>
-              </div>
-              <div class="form-group">
-                <label>CVV</label>
-                <input type="password" placeholder="•••" maxlength="3"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Cardholder Name</label>
-              <input type="text" placeholder="As on card"/>
-            </div>
-          </div>
-
-          <div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:16px;margin-top:16px;font-size:13px;color:var(--text-muted);">
-            🔒 Your payment is encrypted with 256-bit SSL security. We never store card details.
-          </div>
-
           <button class="btn btn-primary btn-full" style="margin-top:24px;border:none;cursor:pointer;font-size:16px;padding:18px;" onclick="submitBooking()">
-            ✅ Confirm Booking
+            ✅ Submit Booking Inquiry
           </button>
         </div>
       </div>
@@ -190,12 +159,7 @@
             <div class="price-row"><span>🎉 Event</span><span id="summaryType">—</span></div>
           </div>
 
-          <div class="price-breakdown" style="margin-top:16px;">
-            <div class="price-row"><span>Venue Hire</span><span id="sumBase">₹—</span></div>
-            <div class="price-row"><span>Service (5%)</span><span id="sumService">₹—</span></div>
-            <div class="price-row"><span>GST (18%)</span><span id="sumGST">₹—</span></div>
-            <div class="price-row total"><span>Total Payable</span><span id="sumTotal">₹—</span></div>
-          </div>
+
 
           <div style="margin-top:20px;font-size:13px;color:var(--text-muted);line-height:1.6;">
             ✅ Free cancellation up to 7 days before event<br/>
@@ -248,43 +212,11 @@ document.getElementById('summaryGuests').textContent = document.getElementById('
 document.getElementById('summaryType').textContent = document.getElementById('eventType').value || '—';
 
 function updateAlliedPrices() {
-  const guests = parseInt(document.getElementById('guestCount').value) || 200;
-  
-  let currentAdd = 0;
-  if(document.getElementById('addDecor')?.checked) currentAdd += 80000;
-  if(document.getElementById('addCatering')?.checked) currentAdd += (1200 * guests);
-  if(document.getElementById('addPlanning')?.checked) currentAdd += 40000;
-  if(document.getElementById('addPhoto')?.checked) currentAdd += 60000;
-  
-  alliedCost = currentAdd;
-  
-  const base = price + alliedCost;
-  const service = Math.round(base * .05);
-  const gst = Math.round(base * .18);
-  finalPayable = base + service + gst;
-  
-  document.getElementById('sumBase').textContent = fmt(price);
-  if(alliedCost > 0) {
-    document.getElementById('sumBase').innerHTML = `${fmt(price)} <span style="font-size:12px;color:var(--gold);font-weight:600;display:block;margin-top:4px;">(+ ${fmt(alliedCost)} Services)</span>`;
-  }
-  document.getElementById('sumService').textContent = fmt(service);
-  document.getElementById('sumGST').textContent = fmt(gst);
-  document.getElementById('sumTotal').textContent = fmt(finalPayable);
+  // Prices not shown
 }
 
 // Initial calculation
 updateAlliedPrices();
-
-function selectPay(el){
-  document.querySelectorAll('.pay-method').forEach(e => e.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('cardFields').style.display =
-    el.textContent.includes('Card') ? 'block' : 'none';
-}
-
-function formatCard(el){
-  el.value = el.value.replace(/\D/g,'').replace(/(.{4})/g,'$1 ').trim().slice(0,19);
-}
 
 function submitBooking(){
   const required = ['eventDate','guestCount','firstName','email','phone'];
@@ -303,14 +235,12 @@ function submitBooking(){
     type: document.getElementById('eventType').value,
     name: document.getElementById('firstName').value + ' ' + (document.getElementById('lastName').value||''),
     email: document.getElementById('email').value,
-    total: fmt(finalPayable)
+    total: 'Inquiry Submitted'
   };
   sessionStorage.setItem('confirmData', JSON.stringify(finalData));
   location.href = 'confirmation.html';
 }
 
-window.selectPay = selectPay;
-window.formatCard = formatCard;
 window.submitBooking = submitBooking;
 window.updateAlliedPrices = updateAlliedPrices;
 </script>

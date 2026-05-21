@@ -52,8 +52,7 @@ function venueCardHTML(v){
       </div>
       
       <div class="venue-footer">
-        <div class="venue-price">₹${(v.price/1000).toFixed(0)}K <span>Total Hire</span></div>
-        <div class="venue-rating">⭐ ${v.rating} <span style="color:var(--text-muted)">(${v.reviews})</span></div>
+        <div class="venue-rating" style="text-align: left;">⭐ ${v.rating} <span style="color:var(--text-muted)">(${v.reviews} Reviews)</span></div>
         <a href="venue-detail.html?id=${v.id}" class="btn-book" onclick="event.stopPropagation()">Book Now</a>
       </div>
     </div>

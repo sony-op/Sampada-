@@ -52,11 +52,6 @@
         <option value="500">Up to 500 Guests</option>
         <option value="1000">Up to 1000 Guests</option>
       </select>
-      <select class="filter-select" id="filterSort" onchange="applyFilters()">
-        <option value="rating">⭐ Top Rated</option>
-        <option value="price_asc">💰 Price: Low to High</option>
-        <option value="price_desc">💰 Price: High to Low</option>
-      </select>
       <button class="filter-tag active" onclick="clearFilters()">Clear All</button>
       <span class="results-count" id="resultsCount">Showing 6 venues</span>
     </div>
@@ -84,7 +79,6 @@
 function applyFilters(){
   const type = document.getElementById('filterType').value;
   const cap  = document.getElementById('filterCapacity').value;
-  const sort = document.getElementById('filterSort').value;
 
   let filtered = [...venues];
   
@@ -98,10 +92,8 @@ function applyFilters(){
     filtered = filtered.filter(v => v.capacity <= +cap);
   }
 
-  // Sort
-  if(sort === 'price_asc')  filtered.sort((a,b) => a.price - b.price);
-  else if(sort === 'price_desc') filtered.sort((a,b) => b.price - a.price);
-  else filtered.sort((a,b) => b.rating - a.rating);
+  // Sort by rating by default
+  filtered.sort((a,b) => b.rating - a.rating);
 
   const grid = document.getElementById('venueGrid');
   document.getElementById('resultsCount').textContent = `Showing ${filtered.length} venues`;
@@ -118,7 +110,6 @@ function applyFilters(){
 
 function clearFilters(){
   ['filterType','filterCapacity'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('filterSort').value = 'rating';
   applyFilters();
 }
 
