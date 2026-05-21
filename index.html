@@ -39,32 +39,7 @@
     <h1>Best Wedding Venues <span class="gold">in Surat</span></h1>
     <p>Discover Surat's largest fully AC banquet halls with luxury restrooms, exotic farmhouses, and premium resorts at guaranteed lowest prices.</p>
 
-    <!-- POPULAR CHOICES QUICK FILTER CHIPS -->
-    <div class="popular-regions-container">
-      <span class="popular-label">Popular Locations:</span>
-      <div class="popular-chips">
-        <a href="venues.html?region=Chhatarpur" class="chip">Chhatarpur & MG Road</a>
-        <a href="venues.html?region=NH-8" class="chip">NH-8 & Pushpanjali</a>
-        <a href="venues.html?region=GT-Karnal" class="chip">GT Karnal Road</a>
-        <a href="venues.html?region=5-Star" class="chip">5 Star Banquets</a>
-        <a href="venues.html?region=Dwarka" class="chip">Dwarka Expressway</a>
-        <a href="venues.html?region=Mumbai" class="chip">Bandra West</a>
-      </div>
-    </div>
-    
-    <div class="hero-search">
-      <div class="search-field">
-        <label>Location / Region</label>
-        <select id="searchRegion">
-          <option value="">All Regions</option>
-          <option value="Delhi">Delhi NCR</option>
-          <option value="Chhatarpur">Chhatarpur & MG Road</option>
-          <option value="NH-8">NH-8 & Pushpanjali</option>
-          <option value="Gurgaon">Gurgaon</option>
-          <option value="Noida">Noida</option>
-          <option value="Mumbai">Mumbai</option>
-        </select>
-      </div>
+    <div class="hero-search" style="max-width: 650px; margin: 0 auto;">
       <div class="search-field">
         <label>Venue Type</label>
         <select id="searchType">
@@ -81,15 +56,6 @@
           <option value="200">100 - 300 Guests</option>
           <option value="500">300 - 600 Guests</option>
           <option value="1000">600+ Guests</option>
-        </select>
-      </div>
-      <div class="search-field">
-        <label>Budget per Plate</label>
-        <select id="searchBudget">
-          <option value="">Any Budget</option>
-          <option value="1500">Below ₹1,500/plate</option>
-          <option value="2500">₹1,500 - ₹2,500/plate</option>
-          <option value="4000">₹2,500+/plate</option>
         </select>
       </div>
       <button class="btn btn-primary search-btn" onclick="executeSearch()">Search Venues</button>

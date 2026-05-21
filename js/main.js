@@ -30,11 +30,6 @@ if(featuredContainer && typeof venues !== 'undefined'){
 }
 
 function venueCardHTML(v){
-  // Calculate per plate price based on id or default estimation for realism
-  const perPlate = v.type === 'Wedding' || v.type === 'Outdoor' 
-    ? `₹${(1200 + (v.id * 150)).toLocaleString()}`
-    : `₹${(800 + (v.id * 100)).toLocaleString()}`;
-    
   return `
   <div class="venue-card fade-in" onclick="location.href='venue-detail.html?id=${v.id}'" style="cursor:pointer">
     <div class="venue-img">
@@ -45,21 +40,13 @@ function venueCardHTML(v){
     <div class="venue-info">
       <span class="venue-type-tag">${v.type === 'Wedding' || v.type === 'Outdoor' ? '💍 Luxury Wedding' : '🏢 Corporate/Social'}</span>
       <h3>${v.name}</h3>
-      <p class="venue-card-loc">📍 ${v.location || v.city}</p>
       
-      <div class="venue-features-row">
-        <div class="feat-item">
+      <div class="venue-features-row" style="justify-content: center;">
+        <div class="feat-item" style="justify-content: center; flex: none;">
           <span class="feat-icon">👥</span>
           <div class="feat-details">
             <span class="feat-label">Capacity</span>
             <span class="feat-val">${v.capacity - 50} - ${v.capacity + 200} Guests</span>
-          </div>
-        </div>
-        <div class="feat-item">
-          <span class="feat-icon">🍽️</span>
-          <div class="feat-details">
-            <span class="feat-label">Per Plate Cost</span>
-            <span class="feat-val">${perPlate} / plate</span>
           </div>
         </div>
       </div>
@@ -114,16 +101,12 @@ fadeEls.forEach(el => fadeObs.observe(el));
 window.toggleFav = toggleFav;
 
 function executeSearch(){
-  const reg = document.getElementById('searchRegion')?.value || '';
   const type = document.getElementById('searchType')?.value || '';
   const cap = document.getElementById('searchCapacity')?.value || '';
-  const bud = document.getElementById('searchBudget')?.value || '';
   
   const params = new URLSearchParams();
-  if(reg) params.set('region', reg);
   if(type) params.set('type', type);
   if(cap) params.set('capacity', cap);
-  if(bud) params.set('budget', bud);
   
   window.location.href = 'venues.html?' + params.toString();
 }

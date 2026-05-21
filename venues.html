@@ -38,17 +38,7 @@
 <!-- FILTERS -->
 <div class="filters-bar">
   <div class="container">
-    <div class="filters-inner">
-      <select class="filter-select" id="filterRegion" onchange="applyFilters()">
-        <option value="">📍 All Regions / Cities</option>
-        <option value="Delhi">Delhi NCR</option>
-        <option value="Chhatarpur">Chhatarpur & MG Road</option>
-        <option value="NH-8">NH-8 & Pushpanjali</option>
-        <option value="Gurgaon">Gurgaon</option>
-        <option value="Noida">Noida</option>
-        <option value="Mumbai">Mumbai</option>
-        <option value="Pune">Pune</option>
-      </select>
+    <div class="filters-inner" style="justify-content: center; gap: 16px;">
       <select class="filter-select" id="filterType" onchange="applyFilters()">
         <option value="">🎉 All Venue Types</option>
         <option value="Wedding">Banquet Hall</option>
@@ -61,12 +51,6 @@
         <option value="200">Up to 200 Guests</option>
         <option value="500">Up to 500 Guests</option>
         <option value="1000">Up to 1000 Guests</option>
-      </select>
-      <select class="filter-select" id="filterBudget" onchange="applyFilters()">
-        <option value="">🍽️ Per Plate Budget</option>
-        <option value="1500">Below ₹1,500/plate</option>
-        <option value="2500">₹1,500 - ₹2,500/plate</option>
-        <option value="4000">₹2,500+/plate</option>
       </select>
       <select class="filter-select" id="filterSort" onchange="applyFilters()">
         <option value="rating">⭐ Top Rated</option>
@@ -98,21 +82,11 @@
 <script src="js/main.js"></script>
 <script>
 function applyFilters(){
-  const region = document.getElementById('filterRegion').value;
   const type = document.getElementById('filterType').value;
   const cap  = document.getElementById('filterCapacity').value;
-  const budget = document.getElementById('filterBudget').value;
   const sort = document.getElementById('filterSort').value;
 
   let filtered = [...venues];
-  
-  // Filter by Region/City
-  if(region) {
-    filtered = filtered.filter(v => 
-      v.city.toLowerCase().includes(region.toLowerCase()) || 
-      v.location.toLowerCase().includes(region.toLowerCase())
-    );
-  }
   
   // Filter by Type
   if(type) {
@@ -122,20 +96,6 @@ function applyFilters(){
   // Filter by Capacity
   if(cap) {
     filtered = filtered.filter(v => v.capacity <= +cap);
-  }
-  
-  // Filter by Per Plate Price estimate
-  if(budget) {
-    filtered = filtered.filter(v => {
-      const perPlatePrice = v.type === 'Wedding' || v.type === 'Outdoor' 
-        ? (1200 + (v.id * 150))
-        : (800 + (v.id * 100));
-        
-      if(budget === '1500') return perPlatePrice < 1500;
-      if(budget === '2500') return perPlatePrice >= 1500 && perPlatePrice <= 2500;
-      if(budget === '4000') return perPlatePrice > 2500;
-      return true;
-    });
   }
 
   // Sort
@@ -157,22 +117,18 @@ function applyFilters(){
 }
 
 function clearFilters(){
-  ['filterRegion','filterType','filterCapacity','filterBudget'].forEach(id => document.getElementById(id).value = '');
+  ['filterType','filterCapacity'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('filterSort').value = 'rating';
   applyFilters();
 }
 
 // Read URL params
 const urlParams = new URLSearchParams(window.location.search);
-const regionParam = urlParams.get('region');
 const typeParam = urlParams.get('type');
 const capParam = urlParams.get('capacity');
-const budParam = urlParams.get('budget');
 
-if(regionParam) document.getElementById('filterRegion').value = regionParam;
 if(typeParam) document.getElementById('filterType').value = typeParam;
 if(capParam) document.getElementById('filterCapacity').value = capParam;
-if(budParam) document.getElementById('filterBudget').value = budParam;
 
 applyFilters();
 </script>
