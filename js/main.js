@@ -8,8 +8,17 @@ window.addEventListener('scroll', () => {
 const hamburger = document.getElementById('hamburger');
 if(hamburger){
   hamburger.addEventListener('click', () => {
-    document.querySelector('.nav-links')?.classList.toggle('open');
+    const navLinks = document.querySelector('.nav-links');
+    navLinks?.classList.toggle('open');
     document.querySelector('.nav-actions')?.classList.toggle('open');
+    
+    if (navLinks?.classList.contains('open')) {
+      hamburger.innerHTML = '✕';
+      hamburger.style.color = '#FCFAF7'; // Contrast against dark crimson drawer
+    } else {
+      hamburger.innerHTML = '☰';
+      hamburger.style.color = '';
+    }
   });
 }
 
