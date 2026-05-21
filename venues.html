@@ -37,29 +37,34 @@
 <div class="filters-bar">
   <div class="container">
     <div class="filters-inner">
-      <select class="filter-select" id="filterCity" onchange="applyFilters()">
-        <option value="">📍 All Cities</option>
-        <option>Mumbai</option>
-        <option>Delhi</option>
-        <option>Pune</option>
-        <option>Bangalore</option>
-        <option>Hyderabad</option>
-        <option>Jaipur</option>
+      <select class="filter-select" id="filterRegion" onchange="applyFilters()">
+        <option value="">📍 All Regions / Cities</option>
+        <option value="Delhi">Delhi NCR</option>
+        <option value="Chhatarpur">Chhatarpur & MG Road</option>
+        <option value="NH-8">NH-8 & Pushpanjali</option>
+        <option value="Gurgaon">Gurgaon</option>
+        <option value="Noida">Noida</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Pune">Pune</option>
       </select>
       <select class="filter-select" id="filterType" onchange="applyFilters()">
-        <option value="">🎉 All Events</option>
-        <option>Wedding</option>
-        <option>Corporate</option>
-        <option>Birthday</option>
-        <option>Conference</option>
-        <option>Party</option>
+        <option value="">🎉 All Venue Types</option>
+        <option value="Wedding">Banquet Hall</option>
+        <option value="Outdoor">Wedding Lawn/Farmhouse</option>
+        <option value="Corporate">Motel/Resort</option>
+        <option value="Party">Pool Party Venue</option>
       </select>
       <select class="filter-select" id="filterCapacity" onchange="applyFilters()">
         <option value="">👥 Any Capacity</option>
-        <option value="100">Up to 100</option>
-        <option value="200">Up to 200</option>
-        <option value="500">Up to 500</option>
-        <option value="1000">Up to 1000</option>
+        <option value="200">Up to 200 Guests</option>
+        <option value="500">Up to 500 Guests</option>
+        <option value="1000">Up to 1000 Guests</option>
+      </select>
+      <select class="filter-select" id="filterBudget" onchange="applyFilters()">
+        <option value="">🍽️ Per Plate Budget</option>
+        <option value="1500">Below ₹1,500/plate</option>
+        <option value="2500">₹1,500 - ₹2,500/plate</option>
+        <option value="4000">₹2,500+/plate</option>
       </select>
       <select class="filter-select" id="filterSort" onchange="applyFilters()">
         <option value="rating">⭐ Top Rated</option>
@@ -91,16 +96,47 @@
 <script src="js/main.js"></script>
 <script>
 function applyFilters(){
-  const city = document.getElementById('filterCity').value;
+  const region = document.getElementById('filterRegion').value;
   const type = document.getElementById('filterType').value;
   const cap  = document.getElementById('filterCapacity').value;
+  const budget = document.getElementById('filterBudget').value;
   const sort = document.getElementById('filterSort').value;
 
   let filtered = [...venues];
-  if(city) filtered = filtered.filter(v => v.city === city);
-  if(type) filtered = filtered.filter(v => v.type === type);
-  if(cap)  filtered = filtered.filter(v => v.capacity <= +cap);
+  
+  // Filter by Region/City
+  if(region) {
+    filtered = filtered.filter(v => 
+      v.city.toLowerCase().includes(region.toLowerCase()) || 
+      v.location.toLowerCase().includes(region.toLowerCase())
+    );
+  }
+  
+  // Filter by Type
+  if(type) {
+    filtered = filtered.filter(v => v.type === type);
+  }
+  
+  // Filter by Capacity
+  if(cap) {
+    filtered = filtered.filter(v => v.capacity <= +cap);
+  }
+  
+  // Filter by Per Plate Price estimate
+  if(budget) {
+    filtered = filtered.filter(v => {
+      const perPlatePrice = v.type === 'Wedding' || v.type === 'Outdoor' 
+        ? (1200 + (v.id * 150))
+        : (800 + (v.id * 100));
+        
+      if(budget === '1500') return perPlatePrice < 1500;
+      if(budget === '2500') return perPlatePrice >= 1500 && perPlatePrice <= 2500;
+      if(budget === '4000') return perPlatePrice > 2500;
+      return true;
+    });
+  }
 
+  // Sort
   if(sort === 'price_asc')  filtered.sort((a,b) => a.price - b.price);
   else if(sort === 'price_desc') filtered.sort((a,b) => b.price - a.price);
   else filtered.sort((a,b) => b.rating - a.rating);
@@ -119,17 +155,22 @@ function applyFilters(){
 }
 
 function clearFilters(){
-  ['filterCity','filterType','filterCapacity'].forEach(id => document.getElementById(id).value = '');
+  ['filterRegion','filterType','filterCapacity','filterBudget'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('filterSort').value = 'rating';
   applyFilters();
 }
 
 // Read URL params
 const urlParams = new URLSearchParams(window.location.search);
+const regionParam = urlParams.get('region');
 const typeParam = urlParams.get('type');
-if(typeParam){
-  document.getElementById('filterType').value = typeParam;
-}
+const capParam = urlParams.get('capacity');
+const budParam = urlParams.get('budget');
+
+if(regionParam) document.getElementById('filterRegion').value = regionParam;
+if(typeParam) document.getElementById('filterType').value = typeParam;
+if(capParam) document.getElementById('filterCapacity').value = capParam;
+if(budParam) document.getElementById('filterBudget').value = budParam;
 
 applyFilters();
 </script>

@@ -33,48 +33,147 @@
 <section class="hero-section" id="home">
   <div class="hero-overlay"></div>
   <div class="hero-content fade-in">
-    <span class="hero-badge">✦ Premier Venue Booking Platform</span>
-    <h1>Discover the Perfect Venue<br/>for Your <span class="gold">Unforgettable Event</span></h1>
-    <p>Explore India's most exclusive collection of luxury banquet halls, wedding lawns, and corporate spaces.</p>
+    <span class="hero-badge">✦ INDIA'S MOST TRUSTED LUXURY VENUE NETWORK</span>
+    <h1>Find the Perfect <span class="gold">Wedding Venue</span><br/>& Allied Services</h1>
+    <p>Discover handpicked banquet halls, exotic farmhouses and premium resorts at guaranteed lowest prices.</p>
+
+    <!-- POPULAR CHOICES QUICK FILTER CHIPS -->
+    <div class="popular-regions-container">
+      <span class="popular-label">Popular Locations:</span>
+      <div class="popular-chips">
+        <a href="venues.html?region=Chhatarpur" class="chip">Chhatarpur & MG Road</a>
+        <a href="venues.html?region=NH-8" class="chip">NH-8 & Pushpanjali</a>
+        <a href="venues.html?region=GT-Karnal" class="chip">GT Karnal Road</a>
+        <a href="venues.html?region=5-Star" class="chip">5 Star Banquets</a>
+        <a href="venues.html?region=Dwarka" class="chip">Dwarka Expressway</a>
+        <a href="venues.html?region=Mumbai" class="chip">Bandra West</a>
+      </div>
+    </div>
     
     <div class="hero-search">
       <div class="search-field">
-        <label>Location</label>
-        <select>
-          <option>Mumbai</option>
-          <option>Delhi</option>
-          <option>Bangalore</option>
-          <option>Pune</option>
-          <option>Jaipur</option>
-          <option>Hyderabad</option>
+        <label>Location / Region</label>
+        <select id="searchRegion">
+          <option value="">All Regions</option>
+          <option value="Delhi">Delhi NCR</option>
+          <option value="Chhatarpur">Chhatarpur & MG Road</option>
+          <option value="NH-8">NH-8 & Pushpanjali</option>
+          <option value="Gurgaon">Gurgaon</option>
+          <option value="Noida">Noida</option>
+          <option value="Mumbai">Mumbai</option>
         </select>
       </div>
       <div class="search-field">
-        <label>Event Type</label>
-        <select>
-          <option>Wedding</option>
-          <option>Corporate</option>
-          <option>Birthday</option>
-          <option>Party</option>
-          <option>Conference</option>
+        <label>Venue Type</label>
+        <select id="searchType">
+          <option value="">All Types</option>
+          <option value="Wedding">Banquet Hall</option>
+          <option value="Outdoor">Wedding Lawn/Farmhouse</option>
+          <option value="Corporate">Motel/Resort</option>
         </select>
       </div>
       <div class="search-field">
-        <label>Guests</label>
-        <select>
-          <option>50 - 100</option>
-          <option>100 - 300</option>
-          <option>300 - 500</option>
-          <option>500+</option>
+        <label>Guest Capacity</label>
+        <select id="searchCapacity">
+          <option value="">Any Seating</option>
+          <option value="200">100 - 300 Guests</option>
+          <option value="500">300 - 600 Guests</option>
+          <option value="1000">600+ Guests</option>
         </select>
       </div>
-      <button class="btn btn-primary search-btn" onclick="location.href='venues.html'">Search Venues</button>
+      <div class="search-field">
+        <label>Budget per Plate</label>
+        <select id="searchBudget">
+          <option value="">Any Budget</option>
+          <option value="1500">Below ₹1,500/plate</option>
+          <option value="2500">₹1,500 - ₹2,500/plate</option>
+          <option value="4000">₹2,500+/plate</option>
+        </select>
+      </div>
+      <button class="btn btn-primary search-btn" onclick="executeSearch()">Search Venues</button>
     </div>
   </div>
 
   <div class="scroll-indicator" onclick="document.getElementById('categories').scrollIntoView({behavior: 'smooth'})">
     <span>Scroll to Explore</span>
     <div class="mouse-icon"><div class="wheel"></div></div>
+  </div>
+</section>
+
+<!-- LIVE STATISTICS BAR (GetYourVenue Style) -->
+<section class="stats-bar">
+  <div class="container stats-container">
+    <div class="stat-item">
+      <div class="stat-icon">🏛️</div>
+      <div>
+        <div class="stat-num" data-target="500">0</div>
+        <p>Verified Venues</p>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">📅</div>
+      <div>
+        <div class="stat-num" data-target="150">0</div>
+        <p>Booked Venues</p>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">🌸</div>
+      <div>
+        <div class="stat-num" data-target="85">0</div>
+        <p>Decorated Events</p>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">⭐</div>
+      <div>
+        <div class="stat-num-static">4.9★</div>
+        <p>Customer Rating</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNIQUE SELLING PROPOSITIONS (USPs) SECTION -->
+<section class="section usps-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">Why Choose Us</span>
+      <h2>Our Unique <span class="gold">Selling Propositions</span></h2>
+      <p style="max-width: 600px; margin: 10px auto 0; color: var(--text-muted);">Delhi NCR's premier wedding organizers bringing you transparency, trust and savings</p>
+    </div>
+    <div class="usps-grid">
+      <div class="usp-card">
+        <div class="usp-icon">💡</div>
+        <h3>Unbiased Venue Advice</h3>
+        <p>100% independent advice focused entirely on your budget, seating requirements and preferences.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">🤝</div>
+        <h3>Transparent Bulk Deals</h3>
+        <p>Utmost integrity in pricing. We pass bulk volume discounts directly to you with zero hidden margins.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">👤</div>
+        <h3>1-on-1 Dedicated Support</h3>
+        <p>Get a highly professional personal relationship manager from research, visits to final execution.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">💰</div>
+        <h3>Best Price Guaranteed</h3>
+        <p>We negotiate hard with venue owners to secure booking rates lower than what they quote directly.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">🎁</div>
+        <h3>Free Doorstep Consultations</h3>
+        <p>No consultation fees or booking charges. Complete premium assistance at absolutely zero cost to you.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">🔑</div>
+        <h3>Single-Window Allied Services</h3>
+        <p>Save time & effort. Get elite catering, luxury floral decors, photographers and DJs under one single platform.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -88,34 +187,87 @@
     <div class="categories-grid">
       <a href="venues.html?type=Wedding" class="category-card">
         <div class="cat-icon">💍</div>
-        <h3>Wedding</h3>
+        <h3>Banquet Halls</h3>
         <p>120+ venues</p>
+      </a>
+      <a href="venues.html?type=Outdoor" class="category-card">
+        <div class="cat-icon">🌿</div>
+        <h3>Wedding Farmhouses</h3>
+        <p>70+ venues</p>
       </a>
       <a href="venues.html?type=Corporate" class="category-card">
         <div class="cat-icon">🏢</div>
-        <h3>Corporate</h3>
+        <h3>Motels & Resorts</h3>
         <p>85+ venues</p>
-      </a>
-      <a href="venues.html?type=Birthday" class="category-card">
-        <div class="cat-icon">🎂</div>
-        <h3>Birthday</h3>
-        <p>200+ venues</p>
       </a>
       <a href="venues.html?type=Conference" class="category-card">
         <div class="cat-icon">🎤</div>
-        <h3>Conference</h3>
+        <h3>Conference Halls</h3>
         <p>60+ venues</p>
       </a>
       <a href="venues.html?type=Party" class="category-card">
         <div class="cat-icon">🎉</div>
-        <h3>Party</h3>
+        <h3>Pool Party Venues</h3>
         <p>150+ venues</p>
       </a>
-      <a href="venues.html?type=Outdoor" class="category-card">
-        <div class="cat-icon">🌿</div>
-        <h3>Outdoor</h3>
-        <p>70+ venues</p>
+      <a href="venues.html?type=Wedding" class="category-card">
+        <div class="cat-icon">🏰</div>
+        <h3>5-Star Banquets</h3>
+        <p>40+ venues</p>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ALLIED WEDDING SERVICES SECTION (GetYourVenue Style) -->
+<section class="section services-section" id="services">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">One-Stop Solution</span>
+      <h2>Sampada Allied <span class="gold">Wedding Services</span></h2>
+      <p style="max-width: 600px; margin: 10px auto 0; color: var(--text-muted);">Top-notch wedding arrangements and premium allied services offered together, under one single roof</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=500&q=80" alt="Wedding Decor"/>
+        </div>
+        <div class="service-content">
+          <h3>🌸 Luxury Floral Decor</h3>
+          <p>Exquisite floral arches, decked out passages, grand stages, and premium theme setup managed by award-winning wedding decorators.</p>
+          <a href="booking.html" class="btn btn-outline" style="padding:8px 18px; font-size:12px;">Enquire Now</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80" alt="Wedding Catering"/>
+        </div>
+        <div class="service-content">
+          <h3>🍽️ Royal Catering Services</h3>
+          <p>Multi-cuisine global delicacies, expert chefs, royal food counters, and courteous hospitality staff catering to the highest standards.</p>
+          <a href="booking.html" class="btn btn-outline" style="padding:8px 18px; font-size:12px;">Enquire Now</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&q=80" alt="Wedding planning"/>
+        </div>
+        <div class="service-content">
+          <h3>✨ Elite Wedding Planning</h3>
+          <p>From guest management, cards design to timeline planning. Our executive planners organize flawless ceremonies stress-free.</p>
+          <a href="booking.html" class="btn btn-outline" style="padding:8px 18px; font-size:12px;">Enquire Now</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500&q=80" alt="Photography"/>
+        </div>
+        <div class="service-content">
+          <h3>📸 Cinematic Photography</h3>
+          <p>Candid storytelling, cinematic wedding videos, and grand pre-wedding photo shoots captured by India's finest wedding photographers.</p>
+          <a href="booking.html" class="btn btn-outline" style="padding:8px 18px; font-size:12px;">Enquire Now</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -125,7 +277,7 @@
   <div class="container">
     <div class="section-header fade-in">
       <span class="section-tag">Hand-picked for You</span>
-      <h2>Featured <span class="gold">Venues</span></h2>
+      <h2>Featured Premium <span class="gold">Venues</span></h2>
       <a href="venues.html" class="view-all">View All →</a>
     </div>
     <div class="venues-grid fade-in" id="featuredVenues"></div>

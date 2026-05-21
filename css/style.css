@@ -1522,3 +1522,310 @@ img {
   font-size: 40px;
   margin-bottom: 12px;
 }
+
+/* ===== POPULAR CHOICES CHIPS ===== */
+.popular-regions-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px auto 30px;
+  max-width: 900px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.popular-label {
+  font-size: 13px;
+  color: var(--white);
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+.popular-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.chip {
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.chip:hover {
+  background: var(--gold);
+  color: var(--white);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+/* ===== UNIQUE SELLING PROPOSITIONS (USPs) ===== */
+.usps-section {
+  background: var(--white);
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+.usps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.usp-card {
+  background: var(--cream);
+  border: 1px solid rgba(197, 160, 89, 0.12);
+  border-radius: var(--radius);
+  padding: 32px;
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.usp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(140, 28, 38, 0.04);
+  border-color: var(--gold);
+}
+
+.usp-icon {
+  font-size: 32px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.usp-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--crimson-dark);
+  margin-bottom: 12px;
+}
+
+.usp-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== ALLIED SERVICES SECTION ===== */
+.services-section {
+  background: var(--cream);
+  padding: 80px 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.service-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid rgba(197, 160, 89, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(140, 28, 38, 0.05);
+  border-color: var(--gold);
+}
+
+.service-img-wrapper {
+  flex: 40%;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-img-wrapper img {
+  transform: scale(1.08);
+}
+
+.service-content {
+  flex: 60%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.service-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--crimson);
+}
+
+.service-content p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== UPGRADED VENUE CARD FEATURES ===== */
+.venue-type-tag {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.venue-card-loc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.venue-features-row {
+  display: flex;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 12px 0;
+  margin-bottom: 14px;
+  gap: 16px;
+}
+
+.feat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.feat-icon {
+  font-size: 18px;
+}
+
+.feat-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.feat-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.feat-val {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--crimson-dark);
+}
+
+/* ===== ALLIED OPTIONS GRID IN BOOKING ===== */
+.allied-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.allied-opt-card {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid rgba(197, 160, 89, 0.12);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.allied-opt-card input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--crimson);
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.allied-opt-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.allied-opt-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--crimson-dark);
+}
+
+.allied-opt-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.allied-opt-price {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold-dark);
+  margin-top: 4px;
+}
+
+.allied-opt-card:hover {
+  border-color: var(--gold);
+}
+
+/* Specific select checked states */
+.allied-opt-card input[type="checkbox"]:checked + .allied-opt-details .allied-opt-title {
+  color: var(--gold-dark);
+}
+
+/* ===== RESPONSIVE OVERRIDES ===== */
+@media(max-width: 768px) {
+  .popular-regions-container {
+    margin: 15px auto 25px;
+    gap: 8px;
+  }
+  .popular-label {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .usps-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .usp-card {
+    padding: 24px;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .service-card {
+    flex-direction: column;
+  }
+  .service-img-wrapper {
+    height: 180px;
+  }
+  .allied-options-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

@@ -94,6 +94,46 @@
           </div>
         </div>
 
+        <!-- Step 2.5: Allied Services -->
+        <div class="booking-form-card" style="margin-bottom:24px;">
+          <div class="form-section-title">02.5 · Allied Wedding Services (Optional)</div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Add premium allied services to your venue booking at special package rates</p>
+          <div class="allied-options-grid">
+            <label class="allied-opt-card">
+              <input type="checkbox" id="addDecor" onchange="updateAlliedPrices()"/>
+              <div class="allied-opt-details">
+                <span class="allied-opt-title">🌸 Luxury Floral Decoration</span>
+                <span class="allied-opt-desc">Premium entry setup, stage, garlands and lights</span>
+                <span class="allied-opt-price">+ ₹80,000</span>
+              </div>
+            </label>
+            <label class="allied-opt-card">
+              <input type="checkbox" id="addCatering" onchange="updateAlliedPrices()"/>
+              <div class="allied-opt-details">
+                <span class="allied-opt-title">🍽️ Royal Catering Services</span>
+                <span class="allied-opt-desc">Global menus, elite buffet and waiters</span>
+                <span class="allied-opt-price">+ ₹1,200 / plate</span>
+              </div>
+            </label>
+            <label class="allied-opt-card">
+              <input type="checkbox" id="addPlanning" onchange="updateAlliedPrices()"/>
+              <div class="allied-opt-details">
+                <span class="allied-opt-title">✨ Elite Wedding Planning</span>
+                <span class="allied-opt-desc">Dedicated coordinator and timeline manager</span>
+                <span class="allied-opt-price">+ ₹40,000</span>
+              </div>
+            </label>
+            <label class="allied-opt-card">
+              <input type="checkbox" id="addPhoto" onchange="updateAlliedPrices()"/>
+              <div class="allied-opt-details">
+                <span class="allied-opt-title">📸 Cinematic Photography</span>
+                <span class="allied-opt-desc">Candid photos, video reels and pre-wedding shoots</span>
+                <span class="allied-opt-price">+ ₹60,000</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
         <!-- Step 3: Payment -->
         <div class="booking-form-card">
           <div class="form-section-title">03 · Payment Method</div>
@@ -175,28 +215,63 @@ try { bookingData = JSON.parse(sessionStorage.getItem('bookingData') || '{}'); }
 
 const venue = venues.find(v => v.id === bookingData.venueId) || venues[0];
 const price = venue.price;
+let alliedCost = 0;
+let finalPayable = 0;
+
+const fmt = n => '₹' + n.toLocaleString('en-IN');
 
 // Pre-fill form
 if(bookingData.date) document.getElementById('eventDate').value = bookingData.date;
 if(bookingData.guests) document.getElementById('guestCount').value = bookingData.guests;
 if(bookingData.type) document.getElementById('eventType').value = bookingData.type;
 
-// Summary
+// Event Listeners for Live Updates
+document.getElementById('eventDate').addEventListener('input', (e) => {
+  document.getElementById('summaryDate').textContent = e.target.value || '—';
+});
+document.getElementById('guestCount').addEventListener('input', (e) => {
+  document.getElementById('summaryGuests').textContent = e.target.value ? e.target.value + ' guests' : '—';
+  updateAlliedPrices();
+});
+document.getElementById('eventType').addEventListener('change', (e) => {
+  document.getElementById('summaryType').textContent = e.target.value || '—';
+});
+
+// Summary Initial Setups
 document.getElementById('summaryImg').src = venue.img;
 document.getElementById('summaryName').textContent = venue.name;
 document.getElementById('summaryLocation').textContent = venue.location;
-document.getElementById('summaryDate').textContent = bookingData.date || '—';
-document.getElementById('summaryGuests').textContent = bookingData.guests ? bookingData.guests + ' guests' : '—';
-document.getElementById('summaryType').textContent = bookingData.type || '—';
+document.getElementById('summaryDate').textContent = document.getElementById('eventDate').value || '—';
+document.getElementById('summaryGuests').textContent = document.getElementById('guestCount').value ? document.getElementById('guestCount').value + ' guests' : '—';
+document.getElementById('summaryType').textContent = document.getElementById('eventType').value || '—';
 
-const fmt = n => '₹' + n.toLocaleString('en-IN');
-const service = Math.round(price * .05);
-const gst = Math.round(price * .18);
-const total = price + service + gst;
-document.getElementById('sumBase').textContent = fmt(price);
-document.getElementById('sumService').textContent = fmt(service);
-document.getElementById('sumGST').textContent = fmt(gst);
-document.getElementById('sumTotal').textContent = fmt(total);
+function updateAlliedPrices() {
+  const guests = parseInt(document.getElementById('guestCount').value) || 200;
+  
+  let currentAdd = 0;
+  if(document.getElementById('addDecor')?.checked) currentAdd += 80000;
+  if(document.getElementById('addCatering')?.checked) currentAdd += (1200 * guests);
+  if(document.getElementById('addPlanning')?.checked) currentAdd += 40000;
+  if(document.getElementById('addPhoto')?.checked) currentAdd += 60000;
+  
+  alliedCost = currentAdd;
+  
+  const base = price + alliedCost;
+  const service = Math.round(base * .05);
+  const gst = Math.round(base * .18);
+  finalPayable = base + service + gst;
+  
+  document.getElementById('sumBase').textContent = fmt(price);
+  if(alliedCost > 0) {
+    document.getElementById('sumBase').innerHTML = `${fmt(price)} <span style="font-size:12px;color:var(--gold);font-weight:600;display:block;margin-top:4px;">(+ ${fmt(alliedCost)} Services)</span>`;
+  }
+  document.getElementById('sumService').textContent = fmt(service);
+  document.getElementById('sumGST').textContent = fmt(gst);
+  document.getElementById('sumTotal').textContent = fmt(finalPayable);
+}
+
+// Initial calculation
+updateAlliedPrices();
 
 function selectPay(el){
   document.querySelectorAll('.pay-method').forEach(e => e.classList.remove('active'));
@@ -226,7 +301,7 @@ function submitBooking(){
     type: document.getElementById('eventType').value,
     name: document.getElementById('firstName').value + ' ' + (document.getElementById('lastName').value||''),
     email: document.getElementById('email').value,
-    total: fmt(total)
+    total: fmt(finalPayable)
   };
   sessionStorage.setItem('confirmData', JSON.stringify(finalData));
   location.href = 'confirmation.html';
@@ -235,6 +310,7 @@ function submitBooking(){
 window.selectPay = selectPay;
 window.formatCard = formatCard;
 window.submitBooking = submitBooking;
+window.updateAlliedPrices = updateAlliedPrices;
 </script>
 </body>
 </html>
