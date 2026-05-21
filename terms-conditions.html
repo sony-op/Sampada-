@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions – VenueVista Luxury</title>
+  <meta name="description" content="Read VenueVista's Terms and Conditions governing use of our venue booking platform." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .policy-hero {
+      padding: 160px 0 80px;
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(197,160,89,0.12);
+    }
+    .policy-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(197,160,89,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .policy-hero-inner { position: relative; z-index: 2; }
+    .policy-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      color: var(--text);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .policy-hero h1 span { color: var(--gold-dark); }
+    .policy-hero p { color: var(--text-muted); font-size: 16px; max-width: 600px; margin: 0 auto; }
+    .policy-meta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(197,160,89,0.08);
+      border: 1px solid rgba(197,160,89,0.2);
+      border-radius: 50px; padding: 8px 20px;
+      font-size: 13px; color: var(--text-muted); margin-top: 20px;
+    }
+    .policy-meta span { color: var(--gold-dark); font-weight: 600; }
+
+    .policy-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 60px;
+      padding: 80px 0 100px;
+      align-items: start;
+    }
+    .policy-toc {
+      position: sticky; top: 110px;
+      background: var(--white);
+      border: 1px solid rgba(197,160,89,0.15);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+    .policy-toc h3 {
+      font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--text-muted); font-weight: 600;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid rgba(197,160,89,0.1);
+    }
+    .policy-toc ul { list-style: none; }
+    .policy-toc ul li { margin-bottom: 4px; }
+    .policy-toc ul li a {
+      display: block; font-size: 13.5px; color: var(--text-muted);
+      padding: 8px 12px; border-radius: 8px;
+      transition: all 0.25s; font-weight: 500;
+    }
+    .policy-toc ul li a:hover, .policy-toc ul li a.active-toc {
+      background: rgba(197,160,89,0.08); color: var(--gold-dark); padding-left: 16px;
+    }
+
+    .policy-section { margin-bottom: 56px; scroll-margin-top: 120px; }
+    .policy-section-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 24px; padding-bottom: 16px;
+      border-bottom: 2px solid rgba(197,160,89,0.12);
+    }
+    .policy-icon {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, rgba(197,160,89,0.12), rgba(197,160,89,0.06));
+      border: 1px solid rgba(197,160,89,0.2);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .policy-section h2 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--text); font-weight: 600; }
+    .policy-section p { color: var(--text-muted); font-size: 15px; line-height: 1.9; margin-bottom: 16px; }
+    .policy-section ul { list-style: none; padding: 0; margin: 16px 0 24px; }
+    .policy-section ul li {
+      color: var(--text-muted); font-size: 15px; line-height: 1.8;
+      padding: 10px 0 10px 28px;
+      border-bottom: 1px solid rgba(197,160,89,0.06);
+      position: relative;
+    }
+    .policy-section ul li::before {
+      content: '✦'; position: absolute; left: 0;
+      color: var(--gold-dark); font-size: 9px; top: 14px;
+    }
+    .policy-section ul li:last-child { border-bottom: none; }
+    .policy-highlight {
+      background: linear-gradient(135deg, rgba(197,160,89,0.06), rgba(197,160,89,0.03));
+      border-left: 3px solid var(--gold);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px; margin: 24px 0;
+    }
+    .policy-highlight p { margin-bottom: 0; font-style: italic; }
+    .policy-contact-card {
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+      border: 1px solid rgba(197,160,89,0.2);
+      border-radius: var(--radius);
+      padding: 36px; text-align: center; margin-top: 40px;
+    }
+    .policy-contact-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 12px; color: var(--text); }
+    .policy-contact-card p { color: var(--text-muted); margin-bottom: 24px; }
+    .contact-details { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 24px; }
+    .contact-item { display: flex; align-items: center; gap: 8px; font-size: 14.5px; color: var(--text); }
+
+    @media (max-width: 900px) {
+      .policy-layout { grid-template-columns: 1fr; }
+      .policy-toc { position: static; display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">Venue<span>Vista</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="venues.html">Venues</a></li>
+      <li><a href="index.html#how-it-works">How It Works</a></li>
+      <li><a href="index.html#testimonials">Reviews</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="venues.html" class="btn btn-outline">Explore</a>
+      <a href="booking.html" class="btn btn-primary">Book Now</a>
+    </div>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="policy-hero">
+  <div class="container policy-hero-inner">
+    <span class="section-tag">Legal Documentation</span>
+    <h1>Terms & <span>Conditions</span></h1>
+    <p>Please read these terms carefully before using our platform. By accessing VenueVista you agree to be bound by these conditions.</p>
+    <div class="policy-meta">📅 Last Updated: <span>May 2026</span> &nbsp;·&nbsp; Effective: <span>January 2024</span></div>
+  </div>
+</section>
+
+<!-- BODY -->
+<section>
+  <div class="container">
+    <div class="policy-layout">
+
+      <!-- TOC -->
+      <aside class="policy-toc">
+        <h3>Contents</h3>
+        <ul>
+          <li><a href="#acceptance" class="active-toc">1. Acceptance of Terms</a></li>
+          <li><a href="#platform-use">2. Use of Platform</a></li>
+          <li><a href="#accounts">3. User Accounts</a></li>
+          <li><a href="#bookings">4. Bookings & Payments</a></li>
+          <li><a href="#cancellations">5. Cancellations & Refunds</a></li>
+          <li><a href="#venue-partners">6. Venue Partners</a></li>
+          <li><a href="#prohibited">7. Prohibited Conduct</a></li>
+          <li><a href="#intellectual">8. Intellectual Property</a></li>
+          <li><a href="#liability">9. Limitation of Liability</a></li>
+          <li><a href="#indemnification">10. Indemnification</a></li>
+          <li><a href="#governing">11. Governing Law</a></li>
+          <li><a href="#contact-terms">12. Contact Us</a></li>
+        </ul>
+      </aside>
+
+      <!-- CONTENT -->
+      <div class="policy-content">
+
+        <div class="policy-highlight">
+          <p>These Terms and Conditions ("Terms") govern your use of the VenueVista Luxury platform, website, and services operated by VenueVista Pvt. Ltd. ("Company," "we," "us"). By registering or making a booking, you accept these Terms in full.</p>
+        </div>
+
+        <!-- 1 -->
+        <div class="policy-section" id="acceptance">
+          <div class="policy-section-header">
+            <div class="policy-icon">📜</div>
+            <h2>1. Acceptance of Terms</h2>
+          </div>
+          <p>By accessing or using the VenueVista platform — including our website, mobile application, or any associated services — you confirm that:</p>
+          <ul>
+            <li>You are at least 18 years of age and legally capable of entering into binding contracts</li>
+            <li>You have read, understood, and agree to be bound by these Terms and our Privacy Policy</li>
+            <li>If acting on behalf of an organisation, you have the authority to bind that organisation to these Terms</li>
+          </ul>
+          <p>If you do not agree with any part of these Terms, please discontinue use of our platform immediately.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="policy-section" id="platform-use">
+          <div class="policy-section-header">
+            <div class="policy-icon">💻</div>
+            <h2>2. Use of Platform</h2>
+          </div>
+          <p>VenueVista grants you a limited, non-exclusive, non-transferable, revocable licence to use our platform strictly for the purpose of discovering, evaluating, and booking event venues in India.</p>
+          <ul>
+            <li>The platform is for personal and commercial event booking purposes only</li>
+            <li>You may not scrape, copy, or systematically extract data from our platform</li>
+            <li>Automated access (bots, crawlers) without written permission is strictly prohibited</li>
+            <li>You agree not to interfere with or disrupt platform security or performance</li>
+            <li>We reserve the right to suspend or terminate access at any time for violations</li>
+          </ul>
+        </div>
+
+        <!-- 3 -->
+        <div class="policy-section" id="accounts">
+          <div class="policy-section-header">
+            <div class="policy-icon">👤</div>
+            <h2>3. User Accounts</h2>
+          </div>
+          <p>To make bookings, you must create a VenueVista account. By creating an account, you agree to:</p>
+          <ul>
+            <li>Provide accurate, current, and complete information during registration</li>
+            <li>Maintain and promptly update your account information</li>
+            <li>Keep your login credentials secure and not share them with third parties</li>
+            <li>Accept responsibility for all activity that occurs under your account</li>
+            <li>Notify us immediately of any suspected unauthorised access at security@venuevista.in</li>
+          </ul>
+          <p>We reserve the right to suspend accounts that provide false information or violate these Terms.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="policy-section" id="bookings">
+          <div class="policy-section-header">
+            <div class="policy-icon">📅</div>
+            <h2>4. Bookings & Payments</h2>
+          </div>
+          <p>All bookings made through VenueVista are subject to the following conditions:</p>
+          <ul>
+            <li><strong>Confirmation:</strong> A booking is confirmed only upon receipt of full or agreed partial payment and email confirmation from VenueVista</li>
+            <li><strong>Pricing:</strong> All prices displayed are in Indian Rupees (INR) and inclusive of applicable taxes unless stated otherwise</li>
+            <li><strong>Payment Methods:</strong> We accept UPI, credit/debit cards, net banking, and approved digital wallets via our secure payment gateway</li>
+            <li><strong>Advance Payment:</strong> A minimum advance deposit (typically 25–50% of total cost) is required at the time of booking</li>
+            <li><strong>Balance Payment:</strong> Remaining amounts are due as per the schedule communicated in the booking confirmation</li>
+            <li><strong>Price Changes:</strong> Quoted prices are honoured for confirmed bookings. Future pricing may vary</li>
+          </ul>
+          <div class="policy-highlight">
+            <p>VenueVista acts as an intermediary between you and venue partners. Final contractual obligations for the event are between you and the venue.</p>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="policy-section" id="cancellations">
+          <div class="policy-section-header">
+            <div class="policy-icon">↩️</div>
+            <h2>5. Cancellations & Refunds</h2>
+          </div>
+          <p>Our cancellation policy is designed to be fair to both users and venue partners:</p>
+          <ul>
+            <li><strong>60+ days before event:</strong> Full refund of advance payment, minus a 5% processing fee</li>
+            <li><strong>30–59 days before event:</strong> 50% of advance payment refunded</li>
+            <li><strong>15–29 days before event:</strong> 25% of advance payment refunded</li>
+            <li><strong>Less than 15 days:</strong> No refund on advance payment; remaining balance waived</li>
+            <li><strong>Venue-initiated cancellations:</strong> Full refund plus a 10% compensation credit for future bookings</li>
+          </ul>
+          <p>Refunds are processed within 7–10 business days to the original payment method. Specific venue cancellation policies may override this schedule and will be communicated at booking.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="policy-section" id="venue-partners">
+          <div class="policy-section-header">
+            <div class="policy-icon">🏛️</div>
+            <h2>6. Venue Partners</h2>
+          </div>
+          <p>VenueVista lists venues from independent venue partners. Please be aware that:</p>
+          <ul>
+            <li>Venue listings, photos, descriptions, and pricing are provided by the venue partners and may be subject to change</li>
+            <li>VenueVista makes reasonable efforts to verify listing accuracy but does not guarantee completeness</li>
+            <li>The final service quality, amenities, and event experience are the sole responsibility of the venue</li>
+            <li>Any disputes regarding venue services should first be addressed with the venue directly</li>
+            <li>VenueVista's dispute resolution team is available to assist if direct resolution fails</li>
+          </ul>
+        </div>
+
+        <!-- 7 -->
+        <div class="policy-section" id="prohibited">
+          <div class="policy-section-header">
+            <div class="policy-icon">🚫</div>
+            <h2>7. Prohibited Conduct</h2>
+          </div>
+          <p>The following activities are strictly prohibited on the VenueVista platform:</p>
+          <ul>
+            <li>Posting false, misleading, or fraudulent reviews or information</li>
+            <li>Impersonating any person, business, or VenueVista representative</li>
+            <li>Using the platform for any illegal, fraudulent, or unauthorised purpose</li>
+            <li>Attempting to circumvent our booking system or pay venues directly to avoid platform fees</li>
+            <li>Harassing, threatening, or abusing venue staff, other users, or VenueVista employees</li>
+            <li>Uploading viruses, malware, or any harmful code to our platform</li>
+            <li>Reverse-engineering, decompiling, or attempting to extract our source code</li>
+          </ul>
+          <p>Violations may result in immediate account termination and, where applicable, legal action.</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="policy-section" id="intellectual">
+          <div class="policy-section-header">
+            <div class="policy-icon">©️</div>
+            <h2>8. Intellectual Property</h2>
+          </div>
+          <p>All content on the VenueVista platform — including logos, text, graphics, photos, software, and the VenueVista brand — is owned by or licensed to VenueVista Pvt. Ltd. and protected by Indian and international intellectual property laws.</p>
+          <ul>
+            <li>You may not reproduce, distribute, or create derivative works from our content without written permission</li>
+            <li>User-submitted content (reviews, photos) remains your property; you grant us a licence to display it on the platform</li>
+            <li>Reporting intellectual property infringement: legal@venuevista.in</li>
+          </ul>
+        </div>
+
+        <!-- 9 -->
+        <div class="policy-section" id="liability">
+          <div class="policy-section-header">
+            <div class="policy-icon">⚠️</div>
+            <h2>9. Limitation of Liability</h2>
+          </div>
+          <p>To the maximum extent permitted by applicable law:</p>
+          <ul>
+            <li>VenueVista is not liable for any indirect, incidental, special, or consequential damages arising from your use of the platform</li>
+            <li>Our total liability for any claim shall not exceed the amount you paid for the booking giving rise to the claim</li>
+            <li>We are not responsible for venue cancellations, quality issues, or force majeure events beyond our control</li>
+            <li>The platform is provided "as is" without warranties of any kind, express or implied</li>
+          </ul>
+          <div class="policy-highlight">
+            <p>Nothing in these Terms limits liability that cannot be excluded under applicable Indian consumer protection law.</p>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="policy-section" id="indemnification">
+          <div class="policy-section-header">
+            <div class="policy-icon">🛡️</div>
+            <h2>10. Indemnification</h2>
+          </div>
+          <p>You agree to indemnify and hold harmless VenueVista, its directors, employees, partners, and agents from any claims, losses, damages, liabilities, and expenses (including legal fees) arising from:</p>
+          <ul>
+            <li>Your use of the platform in violation of these Terms</li>
+            <li>Any content you submit, post, or transmit through the platform</li>
+            <li>Your violation of any third-party rights, including intellectual property or privacy rights</li>
+          </ul>
+        </div>
+
+        <!-- 11 -->
+        <div class="policy-section" id="governing">
+          <div class="policy-section-header">
+            <div class="policy-icon">⚖️</div>
+            <h2>11. Governing Law & Disputes</h2>
+          </div>
+          <p>These Terms are governed by the laws of India. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts of Mumbai, Maharashtra.</p>
+          <ul>
+            <li>We encourage resolution of disputes through our internal customer support team first</li>
+            <li>Unresolved disputes may be referred to arbitration under the Arbitration and Conciliation Act, 1996</li>
+            <li>The arbitration shall be conducted in English and held in Mumbai</li>
+          </ul>
+        </div>
+
+        <!-- 12 -->
+        <div class="policy-section" id="contact-terms">
+          <div class="policy-section-header">
+            <div class="policy-icon">✉️</div>
+            <h2>12. Contact Us</h2>
+          </div>
+          <p>For any questions regarding these Terms & Conditions, please contact our legal team:</p>
+          <div class="policy-contact-card">
+            <h3>VenueVista Legal Team</h3>
+            <p>We aim to respond to all legal enquiries within 5 business days.</p>
+            <div class="contact-details">
+              <div class="contact-item">📧 legal@venuevista.in</div>
+              <div class="contact-item">📞 +91 98765 43210</div>
+              <div class="contact-item">📍 Mumbai, Maharashtra, India</div>
+            </div>
+            <a href="mailto:legal@venuevista.in" class="btn btn-primary">Contact Legal Team</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Venue<span>Vista</span></a>
+        <p>India's most trusted venue booking platform. Making every event unforgettable since 2020.</p>
+        <div class="social-links">
+          <a href="#">📘</a><a href="#">📸</a><a href="#">🐦</a><a href="#">▶️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="venues.html">All Venues</a></li>
+          <li><a href="booking.html">Book a Venue</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Event Types</h4>
+        <ul>
+          <li><a href="venues.html?type=Wedding">Weddings</a></li>
+          <li><a href="venues.html?type=Corporate">Corporate</a></li>
+          <li><a href="venues.html?type=Birthday">Birthdays</a></li>
+          <li><a href="venues.html?type=Conference">Conferences</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li>📞 +91 98765 43210</li>
+          <li>✉️ hello@venuevista.in</li>
+          <li>📍 Mumbai, Maharashtra</li>
+          <li>🕐 Mon–Sat: 9AM – 8PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 VenueVista. All rights reserved.</p>
+      <p><a href="privacy-policy.html" style="color:var(--gold-dark);">Privacy Policy</a> · <a href="terms-conditions.html" style="color:var(--gold-dark);">Terms of Service</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  const sections = document.querySelectorAll('.policy-section');
+  const tocLinks = document.querySelectorAll('.policy-toc a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active-toc'));
+        const active = document.querySelector(`.policy-toc a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active-toc');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

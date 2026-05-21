@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Venues – VenueVista Luxury</title>
+  <meta name="description" content="Browse and filter 500+ premium venues across India for weddings, corporate events, birthdays and more."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<nav class="navbar scrolled" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">Venue<span>Vista</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="venues.html" class="active">Venues</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="booking.html" class="btn btn-primary">Book Now</a>
+    </div>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="container">
+    <span class="section-tag">Discover</span>
+    <h1>All Premium <span class="gold">Venues</span></h1>
+    <p>Browse our curated collection of premium event spaces across India</p>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters-bar">
+  <div class="container">
+    <div class="filters-inner">
+      <select class="filter-select" id="filterCity" onchange="applyFilters()">
+        <option value="">📍 All Cities</option>
+        <option>Mumbai</option>
+        <option>Delhi</option>
+        <option>Pune</option>
+        <option>Bangalore</option>
+        <option>Hyderabad</option>
+        <option>Jaipur</option>
+      </select>
+      <select class="filter-select" id="filterType" onchange="applyFilters()">
+        <option value="">🎉 All Events</option>
+        <option>Wedding</option>
+        <option>Corporate</option>
+        <option>Birthday</option>
+        <option>Conference</option>
+        <option>Party</option>
+      </select>
+      <select class="filter-select" id="filterCapacity" onchange="applyFilters()">
+        <option value="">👥 Any Capacity</option>
+        <option value="100">Up to 100</option>
+        <option value="200">Up to 200</option>
+        <option value="500">Up to 500</option>
+        <option value="1000">Up to 1000</option>
+      </select>
+      <select class="filter-select" id="filterSort" onchange="applyFilters()">
+        <option value="rating">⭐ Top Rated</option>
+        <option value="price_asc">💰 Price: Low to High</option>
+        <option value="price_desc">💰 Price: High to Low</option>
+      </select>
+      <button class="filter-tag active" onclick="clearFilters()">Clear All</button>
+      <span class="results-count" id="resultsCount">Showing 6 venues</span>
+    </div>
+  </div>
+</div>
+
+<!-- VENUE GRID -->
+<section class="container">
+  <div class="venues-page-grid" id="venueGrid"></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 VenueVista. All rights reserved.</p>
+      <p><a href="index.html" style="color:var(--gold-dark); font-weight:600;">← Back to Home</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+function applyFilters(){
+  const city = document.getElementById('filterCity').value;
+  const type = document.getElementById('filterType').value;
+  const cap  = document.getElementById('filterCapacity').value;
+  const sort = document.getElementById('filterSort').value;
+
+  let filtered = [...venues];
+  if(city) filtered = filtered.filter(v => v.city === city);
+  if(type) filtered = filtered.filter(v => v.type === type);
+  if(cap)  filtered = filtered.filter(v => v.capacity <= +cap);
+
+  if(sort === 'price_asc')  filtered.sort((a,b) => a.price - b.price);
+  else if(sort === 'price_desc') filtered.sort((a,b) => b.price - a.price);
+  else filtered.sort((a,b) => b.rating - a.rating);
+
+  const grid = document.getElementById('venueGrid');
+  document.getElementById('resultsCount').textContent = `Showing ${filtered.length} venues`;
+
+  if(!filtered.length){
+    grid.innerHTML = '<div class="no-results"><p>🔍</p><h3>No venues found</h3><p>Try adjusting your filters</p></div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(v => venueCardHTML(v)).join('');
+  document.querySelectorAll('.fade-in').forEach(el => {
+    setTimeout(() => el.classList.add('visible'), 50);
+  });
+}
+
+function clearFilters(){
+  ['filterCity','filterType','filterCapacity'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('filterSort').value = 'rating';
+  applyFilters();
+}
+
+// Read URL params
+const urlParams = new URLSearchParams(window.location.search);
+const typeParam = urlParams.get('type');
+if(typeParam){
+  document.getElementById('filterType').value = typeParam;
+}
+
+applyFilters();
+</script>
+</body>
+</html>

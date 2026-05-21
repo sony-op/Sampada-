@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Confirmed – VenueVista</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<nav class="navbar scrolled">
+  <div class="nav-container">
+    <a href="index.html" class="logo">Venue<span>Vista</span></a>
+  </div>
+</nav>
+
+<div class="confirm-page">
+  <div class="confirm-card">
+    <div class="confirm-icon">🎉</div>
+    <h1>Booking <span class="gold">Confirmed!</span></h1>
+    <p>Congratulations! Your venue has been successfully booked.<br/>
+    A confirmation email & SMS will be sent shortly.</p>
+
+    <div class="booking-ref">
+      <span>Booking Reference Number</span>
+      <strong id="refNum">VV00000000</strong>
+    </div>
+
+    <div class="confirm-details">
+      <div class="confirm-detail-item">
+        <span>🏛️ Venue</span>
+        <strong id="confVenue">—</strong>
+      </div>
+      <div class="confirm-detail-item">
+        <span>📍 Location</span>
+        <strong id="confLocation">—</strong>
+      </div>
+      <div class="confirm-detail-item">
+        <span>📅 Event Date</span>
+        <strong id="confDate">—</strong>
+      </div>
+      <div class="confirm-detail-item">
+        <span>👥 Guests</span>
+        <strong id="confGuests">—</strong>
+      </div>
+      <div class="confirm-detail-item">
+        <span>🎉 Event Type</span>
+        <strong id="confType">—</strong>
+      </div>
+      <div class="confirm-detail-item">
+        <span>💰 Total Paid</span>
+        <strong id="confTotal" style="color:var(--gold)">—</strong>
+      </div>
+    </div>
+
+    <div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:12px;padding:20px;margin-bottom:32px;font-size:14px;color:var(--text-muted);line-height:1.8;text-align:left;">
+      📧 Confirmation sent to: <strong id="confEmail" style="color:var(--white)">—</strong><br/>
+      🤝 Your dedicated coordinator will call within 24 hours<br/>
+      📋 Please keep your reference number handy for all communication<br/>
+      ❌ Free cancellation available up to 7 days before your event
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="index.html" class="btn btn-outline">← Back to Home</a>
+      <a href="venues.html" class="btn btn-primary">Book Another Venue</a>
+      <button onclick="window.print()" class="btn btn-outline">🖨️ Print Receipt</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let data = {};
+try { data = JSON.parse(sessionStorage.getItem('confirmData') || '{}'); } catch(e){}
+
+if(data.ref){
+  document.getElementById('refNum').textContent = data.ref;
+  document.getElementById('confVenue').textContent = data.venueName || '—';
+  document.getElementById('confLocation').textContent = data.venueLocation || '—';
+  document.getElementById('confDate').textContent = data.date ? new Date(data.date).toLocaleDateString('en-IN',{dateStyle:'long'}) : '—';
+  document.getElementById('confGuests').textContent = data.guests ? data.guests + ' guests' : '—';
+  document.getElementById('confType').textContent = data.type || '—';
+  document.getElementById('confTotal').textContent = data.total || '—';
+  document.getElementById('confEmail').textContent = data.email || '—';
+  document.title = `Booking ${data.ref} Confirmed – VenueVista`;
+} else {
+  // Demo mode
+  document.getElementById('refNum').textContent = 'VV' + Math.random().toString().slice(2,10).toUpperCase();
+  document.getElementById('confVenue').textContent = 'The Grand Pavilion';
+  document.getElementById('confLocation').textContent = 'Bandra West, Mumbai';
+  document.getElementById('confDate').textContent = '15 June 2026';
+  document.getElementById('confGuests').textContent = '200 guests';
+  document.getElementById('confType').textContent = 'Wedding';
+  document.getElementById('confTotal').textContent = '₹1,11,750';
+  document.getElementById('confEmail').textContent = 'guest@example.com';
+}
+</script>
+</body>
+</html>

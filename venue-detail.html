@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Venue Detail – VenueVista Luxury</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<nav class="navbar scrolled" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">Venue<span>Vista</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="venues.html" class="active">Venues</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="venues.html" class="btn btn-outline">All Venues</a>
+      <a href="booking.html" class="btn btn-primary">Book Now</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <!-- GALLERY -->
+  <div class="detail-gallery" id="gallerySection">
+    <div class="gallery-main"><img id="mainImg" src="" alt="Venue"/></div>
+    <div class="gallery-side">
+      <img id="sideImg1" src="" alt=""/>
+      <img id="sideImg2" src="" alt=""/>
+    </div>
+  </div>
+
+  <!-- CONTENT + BOOKING CARD -->
+  <div class="detail-content">
+    <div class="detail-main">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px;">
+        <span class="venue-badge" id="venueBadge" style="position:static">—</span>
+        <span style="color:var(--text-muted);font-size:14px; font-weight:600;" id="venueType">—</span>
+      </div>
+      <h1 class="detail-title" id="venueName">Loading...</h1>
+      <div class="detail-meta">
+        <span>📍 <span id="venueLocation">—</span></span>
+        <span>👥 Up to <span id="venueCapacity">—</span> guests</span>
+        <span>⭐ <span id="venueRating">—</span> (<span id="venueReviews">—</span> reviews)</span>
+        <span>🎉 <span id="venueType2">—</span></span>
+      </div>
+      <p class="detail-desc" id="venueDesc">—</p>
+
+      <h3 style="margin-bottom:20px;font-size:18px; font-family:'Playfair Display',serif;">✨ Premium Amenities</h3>
+      <div class="amenities-grid" id="amenitiesGrid"></div>
+
+      <h3 style="margin:32px 0 20px;font-size:18px; font-family:'Playfair Display',serif;">⭐ Guest Reviews</h3>
+      <div id="reviewsSection"></div>
+    </div>
+
+    <!-- BOOKING CARD -->
+    <div>
+      <div class="booking-card">
+        <h3>Reserve This Venue</h3>
+        <div class="price-display">₹<span id="cardPrice">—</span> <span>/ event</span></div>
+        <div class="form-group">
+          <label>📅 Event Date</label>
+          <input type="date" id="bookDate" />
+        </div>
+        <div class="form-group">
+          <label>👥 Number of Guests</label>
+          <input type="number" id="bookGuests" placeholder="Enter guest count" min="10"/>
+        </div>
+        <div class="form-group">
+          <label>🎉 Event Type</label>
+          <select id="bookEventType">
+            <option>Wedding</option>
+            <option>Corporate</option>
+            <option>Birthday</option>
+            <option>Conference</option>
+            <option>Party</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="price-breakdown">
+          <div class="price-row"><span>Venue Hire</span><span id="priceBase">₹—</span></div>
+          <div class="price-row"><span>Service Charge (5%)</span><span id="priceService">₹—</span></div>
+          <div class="price-row"><span>GST (18%)</span><span id="priceGST">₹—</span></div>
+          <div class="price-row total"><span>Total Estimate</span><span id="priceTotal">₹—</span></div>
+        </div>
+        <a href="#" class="btn btn-primary btn-full" id="proceedBtn">Proceed to Book →</a>
+        <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:12px;">🔒 Secure payment · Instant confirmation</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 VenueVista. All rights reserved.</p>
+      <p><a href="venues.html" style="color:var(--gold-dark); font-weight:600;">← Back to Venues</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+const id = +new URLSearchParams(window.location.search).get('id') || 1;
+const venue = venues.find(v => v.id === id) || venues[0];
+
+// Populate page
+document.title = `${venue.name} – VenueVista Premium`;
+document.getElementById('mainImg').src = venue.imgs[0];
+document.getElementById('sideImg1').src = venue.imgs[1];
+document.getElementById('sideImg2').src = venue.imgs[2];
+document.getElementById('venueName').textContent = venue.name;
+document.getElementById('venueBadge').textContent = venue.badge;
+document.getElementById('venueLocation').textContent = venue.location;
+document.getElementById('venueCapacity').textContent = venue.capacity;
+document.getElementById('venueRating').textContent = venue.rating;
+document.getElementById('venueReviews').textContent = venue.reviews;
+document.getElementById('venueType').textContent = venue.type;
+document.getElementById('venueType2').textContent = venue.type;
+document.getElementById('venueDesc').textContent = venue.desc;
+document.getElementById('cardPrice').textContent = (venue.price/1000).toFixed(0)+'K';
+
+document.getElementById('amenitiesGrid').innerHTML =
+  venue.amenities.map(a => `<div class="amenity">${a}</div>`).join('');
+
+// Sample reviews
+const reviews = [
+  {name:'Anika S.',rating:5,text:'Absolutely stunning venue! Everything was perfect.',date:'March 2026'},
+  {name:'Rohan M.',rating:5,text:'Professional staff, gorgeous ambiance. Highly recommend!',date:'February 2026'},
+  {name:'Deepa K.',rating:4,text:'Great venue, parking could be better but overall amazing.',date:'January 2026'},
+];
+document.getElementById('reviewsSection').innerHTML = reviews.map(r => `
+  <div style="background:var(--white);border:var(--border-light);border-radius:12px;padding:24px;margin-bottom:16px;box-shadow:var(--shadow);">
+    <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+      <strong style="color:var(--text);">${r.name}</strong><span style="color:var(--text-muted);font-size:12px">${r.date}</span>
+    </div>
+    <div style="color:var(--gold-dark);margin-bottom:8px">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
+    <p style="color:var(--text-muted);font-size:14.5px">${r.text}</p>
+  </div>`).join('');
+
+// Price breakdown
+function updatePrice(){
+  const base = venue.price;
+  const service = Math.round(base * 0.05);
+  const gst = Math.round(base * 0.18);
+  const total = base + service + gst;
+  const fmt = n => '₹' + n.toLocaleString('en-IN');
+  document.getElementById('priceBase').textContent = fmt(base);
+  document.getElementById('priceService').textContent = fmt(service);
+  document.getElementById('priceGST').textContent = fmt(gst);
+  document.getElementById('priceTotal').textContent = fmt(total);
+}
+updatePrice();
+
+// Proceed button
+document.getElementById('proceedBtn').addEventListener('click', e => {
+  e.preventDefault();
+  const date = document.getElementById('bookDate').value;
+  const guests = document.getElementById('bookGuests').value;
+  const type = document.getElementById('bookEventType').value;
+  if(!date || !guests){
+    alert('Please select a date and number of guests.');
+    return;
+  }
+  sessionStorage.setItem('bookingData', JSON.stringify({
+    venueId: venue.id, venueName: venue.name, venueLocation: venue.location,
+    price: venue.price, img: venue.img, date, guests, type
+  }));
+  location.href = 'booking.html';
+});
+</script>
+</body>
+</html>
