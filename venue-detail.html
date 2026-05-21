@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Venue Detail – VenueVista Luxury</title>
+  <title>Venue Detail – Sampada Festivity</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css"/>
@@ -12,7 +12,7 @@
 
 <nav class="navbar scrolled" id="navbar">
   <div class="nav-container">
-    <a href="index.html" class="logo">Venue<span>Vista</span></a>
+    <a href="index.html" class="logo"><img src="img/logo.png" alt="Sampada Festivity"></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="venues.html" class="active">Venues</a></li>
@@ -97,7 +97,7 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-bottom">
-      <p>&copy; 2026 VenueVista. All rights reserved.</p>
+      <p>&copy; 2026 Sampada Festivity. All rights reserved.</p>
       <p><a href="venues.html" style="color:var(--gold-dark); font-weight:600;">← Back to Venues</a></p>
     </div>
   </div>
@@ -110,7 +110,7 @@ const id = +new URLSearchParams(window.location.search).get('id') || 1;
 const venue = venues.find(v => v.id === id) || venues[0];
 
 // Populate page
-document.title = `${venue.name} – VenueVista Premium`;
+document.title = `${venue.name} – Sampada Festivity`;
 document.getElementById('mainImg').src = venue.imgs[0];
 document.getElementById('sideImg1').src = venue.imgs[1];
 document.getElementById('sideImg2').src = venue.imgs[2];

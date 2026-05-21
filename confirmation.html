@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Booking Confirmed – VenueVista</title>
+  <title>Booking Confirmed – Sampada Festivity</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css"/>
@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar scrolled">
   <div class="nav-container">
-    <a href="index.html" class="logo">Venue<span>Vista</span></a>
+    <a href="index.html" class="logo"><img src="img/logo.png" alt="Sampada Festivity"></a>
   </div>
 </nav>
 
@@ -24,7 +24,7 @@
 
     <div class="booking-ref">
       <span>Booking Reference Number</span>
-      <strong id="refNum">VV00000000</strong>
+      <strong id="refNum">SF00000000</strong>
     </div>
 
     <div class="confirm-details">
@@ -82,10 +82,10 @@ if(data.ref){
   document.getElementById('confType').textContent = data.type || '—';
   document.getElementById('confTotal').textContent = data.total || '—';
   document.getElementById('confEmail').textContent = data.email || '—';
-  document.title = `Booking ${data.ref} Confirmed – VenueVista`;
+  document.title = `Booking ${data.ref} Confirmed – Sampada Festivity`;
 } else {
   // Demo mode
-  document.getElementById('refNum').textContent = 'VV' + Math.random().toString().slice(2,10).toUpperCase();
+  document.getElementById('refNum').textContent = 'SF' + Math.random().toString().slice(2,10).toUpperCase();
   document.getElementById('confVenue').textContent = 'The Grand Pavilion';
   document.getElementById('confLocation').textContent = 'Bandra West, Mumbai';
   document.getElementById('confDate').textContent = '15 June 2026';

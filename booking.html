@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Book a Venue – VenueVista</title>
+  <title>Book a Venue – Sampada Festivity</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css"/>
@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar scrolled" id="navbar">
   <div class="nav-container">
-    <a href="index.html" class="logo">Venue<span>Vista</span></a>
+    <a href="index.html" class="logo"><img src="img/logo.png" alt="Sampada Festivity"></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="venues.html">Venues</a></li>
@@ -217,7 +217,7 @@ function submitBooking(){
       return;
     }
   }
-  const ref = 'VV' + Date.now().toString().slice(-8).toUpperCase();
+  const ref = 'SF' + Date.now().toString().slice(-8).toUpperCase();
   const finalData = {
     ref, venueName: venue.name, venueLocation: venue.location,
     date: document.getElementById('eventDate').value,
