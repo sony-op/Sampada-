@@ -547,6 +547,11 @@ function submitCustomizedInquiry() {
 // Initial Page Load
 window.addEventListener('DOMContentLoaded', () => {
   renderInvitations(invitations);
+  const urlParams = new URLSearchParams(window.location.search);
+  const tab = urlParams.get('tab') || window.location.hash.substring(1);
+  if (tab === 'customize' || tab === 'builder') {
+    switchTab('customize');
+  }
 });
 </script>
 </body>
