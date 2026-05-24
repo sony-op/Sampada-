@@ -1829,3 +1829,803 @@ img {
     gap: 12px;
   }
 }
+
+/* ==========================================
+   ===== WEDDING CARD DESIGNS SECTION ======
+   ========================================== */
+
+/* Page Header & Tabs */
+.page-header {
+  background: linear-gradient(135deg, var(--dark) 0%, var(--crimson-dark) 100%);
+  padding: 140px 0 80px;
+  text-align: center;
+  position: relative;
+  border-bottom: 2px solid var(--gold);
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 48px);
+  color: var(--white);
+  margin-top: 10px;
+}
+.page-header p {
+  color: rgba(255,255,255,0.8);
+  font-size: 16px;
+  max-width: 600px;
+  margin: 15px auto 0;
+}
+
+/* Tabs */
+.tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: -30px;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 40px;
+}
+.tabs-inner {
+  background: var(--white);
+  padding: 8px;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(140, 106, 46, 0.12);
+  display: flex;
+  border: 1px solid rgba(197,160,89,0.2);
+}
+.tab-btn {
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+  color: var(--white);
+  box-shadow: 0 4px 15px rgba(140, 28, 38, 0.25);
+}
+.tab-btn:hover:not(.active) {
+  color: var(--crimson);
+  background: rgba(140,28,38,0.04);
+}
+
+.tab-pane {
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+}
+
+/* Invitation Search & Filter Bar */
+.invites-filters-bar {
+  background: var(--bg-secondary);
+  border-top: 1px solid rgba(197, 160, 89, 0.15);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  padding: 24px 0;
+  margin-bottom: 40px;
+}
+.invites-filters-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+.filter-search-box {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+}
+.filter-search-box input {
+  width: 100%;
+  padding: 14px 20px 14px 44px;
+  border-radius: 30px;
+  border: 1px solid rgba(197,160,89,0.3);
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  background: var(--white);
+  transition: all 0.3s;
+}
+.filter-search-box input:focus {
+  border-color: var(--crimson);
+  box-shadow: 0 0 10px rgba(140, 28, 38, 0.1);
+}
+.filter-search-box::before {
+  content: '🔍';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.filter-select {
+  padding: 14px 24px;
+  border-radius: 30px;
+  border: 1px solid rgba(197,160,89,0.3);
+  background: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.filter-select:focus {
+  border-color: var(--crimson);
+}
+
+/* Card Grid Styles */
+.invitations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 80px;
+}
+
+/* Custom Card Component */
+.invite-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: var(--border-light);
+  box-shadow: var(--shadow);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+.invite-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(140, 28, 38, 0.25);
+  box-shadow: var(--shadow-hover);
+}
+.invite-card-img {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+.invite-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.invite-card:hover .invite-card-img img {
+  transform: scale(1.06);
+}
+.invite-card-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  color: var(--white);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.invite-card-fav {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.85);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.invite-card-fav:hover {
+  background: var(--white);
+  transform: scale(1.1);
+}
+.invite-card-fav.active {
+  background: var(--crimson-light);
+  color: red;
+}
+.invite-card-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.invite-card-type-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--crimson);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.invite-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.invite-card p.desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+.invite-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.invite-tag {
+  background: var(--crimson-light);
+  color: var(--crimson-dark);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(140, 28, 38, 0.08);
+}
+.invite-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(197, 160, 89, 0.1);
+  padding-top: 16px;
+  margin-top: auto;
+}
+.invite-price-box {
+  display: flex;
+  flex-direction: column;
+}
+.invite-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--crimson);
+  font-weight: 700;
+}
+.invite-price span {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+.invite-min-order {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Elegant Details Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 17, 19, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-container {
+  background: var(--bg-primary);
+  width: 100%;
+  max-width: 950px;
+  max-height: 90vh;
+  border-radius: var(--radius);
+  border: 1px solid var(--gold);
+  box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+.modal-overlay.active .modal-container {
+  transform: translateY(0) scale(1);
+}
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid rgba(197,160,89,0.2);
+  font-size: 20px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s;
+}
+.close-modal:hover {
+  background: var(--crimson);
+  color: var(--white);
+  transform: rotate(90deg);
+}
+
+.modal-content-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  padding: 40px;
+}
+.modal-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.modal-gallery-main {
+  height: 380px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(197,160,89,0.15);
+}
+.modal-gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.modal-gallery-thumbs {
+  display: flex;
+  gap: 12px;
+}
+.modal-thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.modal-thumb.active, .modal-thumb:hover {
+  border-color: var(--crimson);
+  transform: scale(1.05);
+}
+.modal-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-right {
+  display: flex;
+  flex-direction: column;
+}
+.modal-right h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.modal-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.modal-price-row {
+  background: var(--crimson-light);
+  border: 1px solid rgba(140,28,38,0.06);
+  padding: 16px 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+.modal-price-large {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--crimson);
+  font-weight: 700;
+}
+.modal-price-large span {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
+}
+.modal-right p.desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.modal-specs-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--crimson-dark);
+  margin-bottom: 12px;
+}
+.modal-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+.modal-spec-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  border-bottom: 1px dashed rgba(197,160,89,0.15);
+  padding-bottom: 6px;
+}
+.modal-spec-label {
+  color: var(--text-muted);
+}
+.modal-spec-val {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Modal Enquiry Form */
+.modal-form {
+  margin-top: auto;
+}
+.modal-form-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.modal-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.modal-form input, .modal-form select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(197,160,89,0.3);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  outline: none;
+}
+.modal-form input:focus, .modal-form select:focus {
+  border-color: var(--crimson);
+}
+.modal-form .btn-submit {
+  width: 100%;
+  background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+  color: var(--white);
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.modal-form .btn-submit:hover {
+  background: var(--gold-dark);
+  box-shadow: 0 4px 15px rgba(140,28,38,0.2);
+}
+
+/* ==========================================
+   ===== LIVE E-CARD BUILDER / CUSTOMIZER =====
+   ========================================== */
+.customizer-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  margin-bottom: 80px;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: var(--border-light);
+  box-shadow: var(--shadow);
+  padding: 40px;
+}
+
+.customizer-panel {
+  display: flex;
+  flex-direction: column;
+}
+.customizer-panel h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.customizer-panel p.subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+.control-group {
+  margin-bottom: 20px;
+}
+.control-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.control-group input, .control-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(197,160,89,0.3);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+.control-group input:focus, .control-group select:focus {
+  border-color: var(--crimson);
+}
+.color-options {
+  display: flex;
+  gap: 12px;
+}
+.color-pill {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+.color-pill.active {
+  border-color: var(--crimson);
+  transform: scale(1.1);
+}
+.color-pill::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 13px;
+  opacity: 0;
+}
+.color-pill.active::after {
+  opacity: 1;
+}
+
+/* Preview Screen Container */
+.preview-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  padding: 30px;
+  border: 1px dashed rgba(197,160,89,0.4);
+  position: relative;
+}
+.live-invite-card {
+  width: 100%;
+  max-width: 360px;
+  height: 520px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+  position: relative;
+  overflow: hidden;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Floral Borders for Card Preview */
+.card-border-frame {
+  position: absolute;
+  inset: 16px;
+  border: 2px solid;
+  pointer-events: none;
+  transition: border-color 0.4s;
+}
+.card-border-frame::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid;
+  opacity: 0.6;
+}
+.card-corner-decor {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 3px solid;
+  pointer-events: none;
+  transition: border-color 0.4s;
+}
+.corner-tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.corner-tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.corner-bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.corner-br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+/* Text styles inside card preview */
+.card-intro {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+.card-couple {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: auto 0;
+}
+.card-name {
+  font-size: 34px;
+  line-height: 1.1;
+  font-weight: 400;
+}
+.card-amp {
+  font-size: 24px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  margin: 6px 0;
+}
+.card-details-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+.card-req {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.card-date {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  padding: 4px 12px;
+  margin: 4px 0;
+}
+.card-venue {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  max-width: 220px;
+}
+
+/* Color Scheme Settings for Live Card Preview */
+.theme-crimson-gold {
+  background: radial-gradient(circle, var(--crimson) 0%, var(--crimson-dark) 100%);
+  color: var(--gold-light);
+}
+.theme-crimson-gold .card-border-frame,
+.theme-crimson-gold .card-border-frame::before,
+.theme-crimson-gold .card-corner-decor,
+.theme-crimson-gold .card-date {
+  border-color: var(--gold);
+}
+.theme-crimson-gold .card-amp,
+.theme-crimson-gold .card-req {
+  color: var(--gold);
+}
+
+.theme-pastel-peach {
+  background: radial-gradient(circle, #FFFDFB 0%, #F5ECE9 100%);
+  color: #5C4A48;
+}
+.theme-pastel-peach .card-border-frame,
+.theme-pastel-peach .card-border-frame::before,
+.theme-pastel-peach .card-corner-decor,
+.theme-pastel-peach .card-date {
+  border-color: var(--crimson);
+}
+.theme-pastel-peach .card-amp,
+.theme-pastel-peach .card-req,
+.theme-pastel-peach .card-intro {
+  color: var(--crimson);
+}
+
+.theme-royal-navy {
+  background: radial-gradient(circle, #1F2E3D 0%, #0F1722 100%);
+  color: var(--gold-light);
+}
+.theme-royal-navy .card-border-frame,
+.theme-royal-navy .card-border-frame::before,
+.theme-royal-navy .card-corner-decor,
+.theme-royal-navy .card-date {
+  border-color: var(--gold);
+}
+.theme-royal-navy .card-amp,
+.theme-royal-navy .card-req {
+  color: var(--gold);
+}
+
+.theme-forest-gold {
+  background: radial-gradient(circle, #1F3025 0%, #101A14 100%);
+  color: var(--gold-light);
+}
+.theme-forest-gold .card-border-frame,
+.theme-forest-gold .card-border-frame::before,
+.theme-forest-gold .card-corner-decor,
+.theme-forest-gold .card-date {
+  border-color: var(--gold);
+}
+.theme-forest-gold .card-amp,
+.theme-forest-gold .card-req {
+  color: var(--gold);
+}
+
+/* Typography styles inside Card Preview based on Selection */
+.font-script .card-name {
+  font-family: 'Playfair Display', serif; /* Script Font Fallback */
+  font-style: italic;
+  font-size: 38px;
+}
+.font-royal .card-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.font-modern .card-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
+}
+
+/* Responsive Customizer */
+@media (max-width: 900px) {
+  .customizer-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 24px;
+  }
+  .modal-content-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+  .modal-gallery-main {
+    height: 250px;
+  }
+}
+

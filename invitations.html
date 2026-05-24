@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Card Designs – Sampada Festivity</title>
+  <meta name="description" content="Explore luxury boxed wedding cards, traditional scrolls, elegant pastel unboxed suites, floral watercolors, and custom interactive digital e-cards."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><img src="img/logo.png" alt="Sampada Festivity"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="venues.html">Venues</a></li>
+      <li><a href="invitations.html" class="active">Invitations</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="booking.html" class="btn btn-primary">Book Now</a>
+    </div>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <span class="section-tag" style="border-color:var(--gold-light); color:var(--gold-light); background:rgba(255,255,255,0.08);">Luxury Stationery & E-invites</span>
+    <h1>Wedding Card <span class="gold" style="color:var(--gold-light)">Designs</span></h1>
+    <p>Discover a premium collection of velvet-boxed cards, traditional scrolls, and custom digital invites crafted to tell your royal love story.</p>
+  </div>
+</div>
+
+<!-- TABS SECTION -->
+<div class="tabs-wrapper">
+  <div class="tabs-inner">
+    <button class="tab-btn active" onclick="switchTab('explore')">🏛️ Explore Cards</button>
+    <button class="tab-btn" onclick="switchTab('customize')">✨ E-Card Live Builder</button>
+  </div>
+</div>
+
+<!-- TAB 1: EXPLORE & FILTER CARDS -->
+<div id="exploreTab" class="tab-pane active">
+  <!-- FILTER BAR -->
+  <div class="invites-filters-bar">
+    <div class="container">
+      <div class="invites-filters-inner">
+        <!-- Search -->
+        <div class="filter-search-box">
+          <input type="text" id="cardSearch" placeholder="Search by title, style, or tag..." onkeyup="filterInvitations()"/>
+        </div>
+        <!-- Format select -->
+        <select class="filter-select" id="filterFormat" onchange="filterInvitations()">
+          <option value="">💌 All Formats</option>
+          <option value="Boxed">📦 Premium Boxed</option>
+          <option value="Unboxed">📄 Classic Printed</option>
+          <option value="Digital">📱 WhatsApp E-Cards</option>
+          <option value="Video">🎬 Animated Videos</option>
+        </select>
+        <!-- Theme select -->
+        <select class="filter-select" id="filterTheme" onchange="filterInvitations()">
+          <option value="">🌸 All Themes</option>
+          <option value="Traditional">🏛️ Royal & Traditional</option>
+          <option value="Floral">🌿 Soft Botanical / Floral</option>
+          <option value="Modern">✨ Quirky & Doodle</option>
+          <option value="Minimalist">💎 Elegant Minimalist</option>
+        </select>
+        <!-- Clear active filters -->
+        <button class="filter-tag active" onclick="clearFilters()" style="cursor:pointer; border:none; padding:12px 24px; border-radius:30px;">Clear Filters</button>
+        <!-- Results Counter -->
+        <span class="results-count" id="resultsCount" style="font-weight:600; color:var(--crimson);">Showing 8 designs</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY GRID -->
+  <section class="container">
+    <div class="invitations-grid" id="invitationsGrid"></div>
+  </section>
+</div>
+
+<!-- TAB 2: LIVE CARD BUILDER -->
+<div id="customizeTab" class="tab-pane">
+  <section class="container">
+    <div class="customizer-layout">
+      <!-- Controls Panel -->
+      <div class="customizer-panel">
+        <span class="section-tag" style="width:fit-content;">Visual Customizer</span>
+        <h3>Build Your Digital <span class="gold">E-Card</span></h3>
+        <p class="subtitle">Personalize your luxury invitation with instant live previews. Perfect for sharing on WhatsApp or social media.</p>
+
+        <!-- Form fields -->
+        <div class="control-group">
+          <label>Bride's First Name</label>
+          <input type="text" id="inputBride" value="Meera" placeholder="e.g. Meera" oninput="updateLiveCard()"/>
+        </div>
+        <div class="control-group">
+          <label>Groom's First Name</label>
+          <input type="text" id="inputGroom" value="Arav" placeholder="e.g. Arav" oninput="updateLiveCard()"/>
+        </div>
+        <div class="control-group">
+          <label>Wedding Date</label>
+          <input type="text" id="inputDate" value="SUNDAY, 28TH NOVEMBER 2026" placeholder="e.g. SUNDAY, 28TH NOVEMBER 2026" oninput="updateLiveCard()"/>
+        </div>
+        <div class="control-group">
+          <label>Venue & Details</label>
+          <input type="text" id="inputVenue" value="The Grand Pavilion, Dumas Road, Surat" placeholder="e.g. Banquet Name, City" oninput="updateLiveCard()"/>
+        </div>
+        <div class="control-group">
+          <label>Typography Style</label>
+          <select id="selectFont" onchange="updateLiveCard()">
+            <option value="font-script">✍️ Regal Script</option>
+            <option value="font-royal">🏰 Royal Classic Serif</option>
+            <option value="font-modern">💎 Modernist Minimalist</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label>Color Theme</label>
+          <div class="color-options">
+            <div class="color-pill active theme-crimson-gold" onclick="selectTheme(this, 'theme-crimson-gold')" style="background:var(--crimson)"></div>
+            <div class="color-pill theme-pastel-peach" onclick="selectTheme(this, 'theme-pastel-peach')" style="background:#F5ECE9; border:1px solid #C5A059;"></div>
+            <div class="color-pill theme-royal-navy" onclick="selectTheme(this, 'theme-royal-navy')" style="background:#0F1722"></div>
+            <div class="color-pill theme-forest-gold" onclick="selectTheme(this, 'theme-forest-gold')" style="background:#1F3025"></div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="submitCustomizedInquiry()" style="margin-top:16px; border:none;">
+          ✨ Save Design & Request Pricing
+        </button>
+      </div>
+
+      <!-- Live Preview Screen -->
+      <div class="preview-container">
+        <div class="live-invite-card theme-crimson-gold font-script" id="liveCard">
+          <!-- Borders and decorations -->
+          <div class="card-border-frame"></div>
+          <div class="card-corner-decor corner-tl"></div>
+          <div class="card-corner-decor corner-tr"></div>
+          <div class="card-corner-decor corner-bl"></div>
+          <div class="card-corner-decor corner-br"></div>
+
+          <!-- Card Content -->
+          <div class="card-intro" id="cardIntroText">Shree Ganeshay Namah</div>
+          
+          <div class="card-couple">
+            <span class="card-name" id="cardBrideName">Meera</span>
+            <span class="card-amp">&</span>
+            <span class="card-name" id="cardGroomName">Arav</span>
+          </div>
+
+          <div class="card-details-box">
+            <span class="card-req" id="cardReqText">Request the pleasure of your company on the auspicious occasion of their wedding</span>
+            <span class="card-date" id="cardDateVal">SUNDAY, 28TH NOVEMBER 2026</span>
+            <span class="card-venue" id="cardVenueVal">The Grand Pavilion, Dumas Road, Surat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- DETAILS MODAL OVERLAY -->
+<div class="modal-overlay" id="detailsModal">
+  <div class="modal-container">
+    <button class="close-modal" onclick="closeModal()">✕</button>
+    <div class="modal-content-grid">
+      <!-- Gallery Left -->
+      <div class="modal-left">
+        <div class="modal-gallery-main">
+          <img id="modalMainImg" src="" alt="Main Image"/>
+        </div>
+        <div class="modal-gallery-thumbs" id="modalThumbs">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+      <!-- Details Right -->
+      <div class="modal-right">
+        <span class="invite-card-type-tag" id="modalTypeTag">—</span>
+        <h2 id="modalTitle">—</h2>
+        <div class="modal-rating-row">
+          <span id="modalStars" style="color:var(--gold-dark); font-weight:bold;">★★★★★</span>
+          <span id="modalRatingText" style="color:var(--text-muted);">4.9 (42 reviews)</span>
+        </div>
+        <div class="modal-price-row">
+          <div class="modal-price-large" id="modalPriceVal">— <span>per card</span></div>
+          <div class="invite-min-order" id="modalMinOrderVal">Minimum Order: 100 cards</div>
+        </div>
+        <p class="desc" id="modalDesc">—</p>
+
+        <div class="modal-specs-title">Production Specifications</div>
+        <div class="modal-specs-list">
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">Paper Quality:</span>
+            <span class="modal-spec-val" id="specPaper">—</span>
+          </div>
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">Printing Process:</span>
+            <span class="modal-spec-val" id="specPrint">—</span>
+          </div>
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">Estimated Delivery:</span>
+            <span class="modal-spec-val" id="specDelivery">—</span>
+          </div>
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">Color Themes Available:</span>
+            <span class="modal-spec-val" id="specColors">—</span>
+          </div>
+        </div>
+
+        <!-- Inquiry Form -->
+        <div class="modal-form">
+          <div class="modal-form-title">⚡ Instant Pricing Inquiry</div>
+          <div class="modal-form-row">
+            <input type="text" id="enqName" placeholder="Your Name" required/>
+            <input type="tel" id="enqPhone" placeholder="Phone Number" required/>
+          </div>
+          <div class="modal-form-row">
+            <input type="number" id="enqQuantity" placeholder="Estimated Qty (e.g. 150)" required/>
+            <select id="enqColor">
+              <!-- Populated by JS -->
+            </select>
+          </div>
+          <button class="btn-submit" onclick="submitCardEnquiry()">📩 Get Custom Quote</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Sampada Festivity. All rights reserved.</p>
+      <p><a href="index.html" style="color:var(--gold-dark); font-weight:600;">← Back to Home</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+// Array of active favorites loaded from LocalStorage
+let favorites = [];
+try {
+  favorites = JSON.parse(localStorage.getItem('sf_card_favs') || '[]');
+} catch (e) {}
+
+// Dynamic Render Function
+function renderInvitations(list) {
+  const grid = document.getElementById('invitationsGrid');
+  const countEl = document.getElementById('resultsCount');
+  
+  countEl.textContent = `Showing ${list.length} design${list.length !== 1 ? 's' : ''}`;
+  
+  if (list.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+        <span style="font-size: 48px;">🔍</span>
+        <h3 style="font-family:'Playfair Display', serif; font-size: 24px; margin-top: 15px;">No Designs Found</h3>
+        <p style="color: var(--text-muted); margin-top: 8px;">Try adjusting search terms or filters.</p>
+      </div>`;
+    return;
+  }
+  
+  grid.innerHTML = list.map(item => {
+    const isFav = favorites.includes(item.id);
+    return `
+      <div class="invite-card fade-in visible" onclick="openDetails(${item.id})">
+        <div class="invite-card-img">
+          <img src="${item.img}" alt="${item.title}" loading="lazy"/>
+          <span class="invite-card-badge">${item.theme}</span>
+          <span class="invite-card-fav ${isFav ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorite(${item.id}, this)">
+            ${isFav ? '❤️' : '🤍'}
+          </span>
+        </div>
+        <div class="invite-card-content">
+          <span class="invite-card-type-tag">💍 ${item.type} Invite</span>
+          <h3>${item.title}</h3>
+          <p class="desc">${item.desc}</p>
+          <div class="invite-tags">
+            ${item.tags.map(tag => `<span class="invite-tag">${tag}</span>`).join('')}
+          </div>
+          <div class="invite-card-footer">
+            <div class="invite-price-box">
+              <span class="invite-price">
+                ${item.type === 'Digital' || item.type === 'Video' ? '₹' + item.price.toLocaleString('en-IN') : '₹' + item.price + '<span> / card</span>'}
+              </span>
+              <span class="invite-min-order">
+                Min: ${item.type === 'Digital' || item.type === 'Video' ? 'Package' : item.minOrder + ' cards'}
+              </span>
+            </div>
+            <button class="btn-book" style="padding: 8px 18px; font-size: 12.5px;">View Details</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// Filtering Function
+function filterInvitations() {
+  const query = document.getElementById('cardSearch').value.toLowerCase();
+  const format = document.getElementById('filterFormat').value;
+  const theme = document.getElementById('filterTheme').value;
+  
+  let result = [...invitations];
+  
+  if (query) {
+    result = result.filter(item => 
+      item.title.toLowerCase().includes(query) || 
+      item.desc.toLowerCase().includes(query) || 
+      item.tags.some(t => t.toLowerCase().includes(query))
+    );
+  }
+  
+  if (format) {
+    result = result.filter(item => item.type === format);
+  }
+  
+  if (theme) {
+    result = result.filter(item => item.theme === theme);
+  }
+  
+  renderInvitations(result);
+}
+
+// Clear Filter Inputs
+function clearFilters() {
+  document.getElementById('cardSearch').value = '';
+  document.getElementById('filterFormat').value = '';
+  document.getElementById('filterTheme').value = '';
+  renderInvitations(invitations);
+}
+
+// Toggle Favorites
+function toggleFavorite(id, element) {
+  const index = favorites.indexOf(id);
+  if (index === -1) {
+    favorites.push(id);
+    element.innerHTML = '❤️';
+    element.classList.add('active');
+  } else {
+    favorites.splice(index, 1);
+    element.innerHTML = '🤍';
+    element.classList.remove('active');
+  }
+  localStorage.setItem('sf_card_favs', JSON.stringify(favorites));
+}
+
+// Tab Switching
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+  
+  if (tabId === 'explore') {
+    document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+    document.getElementById('exploreTab').classList.add('active');
+  } else {
+    document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+    document.getElementById('customizeTab').classList.add('active');
+    updateLiveCard(); // sync visual builder on first visit
+  }
+}
+
+// Modal Detail System
+let selectedProductId = null;
+function openDetails(id) {
+  const item = invitations.find(p => p.id === id);
+  if (!item) return;
+  
+  selectedProductId = id;
+  
+  document.getElementById('modalTitle').textContent = item.title;
+  document.getElementById('modalTypeTag').textContent = `💍 ${item.type} Invitation`;
+  document.getElementById('modalDesc').textContent = item.desc;
+  
+  // Rating and reviews
+  document.getElementById('modalStars').textContent = '★'.repeat(Math.round(item.rating)) + '☆'.repeat(5 - Math.round(item.rating));
+  document.getElementById('modalRatingText').textContent = `${item.rating} (${item.reviewsCount} verified reviews)`;
+  
+  // Price formatting
+  const priceValEl = document.getElementById('modalPriceVal');
+  if (item.type === 'Digital' || item.type === 'Video') {
+    priceValEl.innerHTML = `₹${item.price.toLocaleString('en-IN')} <span>package rate</span>`;
+    document.getElementById('modalMinOrderVal').textContent = '⚡ Instant Delivery Package';
+  } else {
+    priceValEl.innerHTML = `₹${item.price} <span>per card</span>`;
+    document.getElementById('modalMinOrderVal').textContent = `Minimum order quantity: ${item.minOrder} cards`;
+  }
+  
+  // Specifications
+  document.getElementById('specPaper').textContent = item.details.paper;
+  document.getElementById('specPrint').textContent = item.details.printing;
+  document.getElementById('specDelivery').textContent = item.details.delivery;
+  document.getElementById('specColors').textContent = item.details.colors.join(', ');
+  
+  // Gallery Main
+  const mainImg = document.getElementById('modalMainImg');
+  mainImg.src = item.img;
+  mainImg.alt = item.title;
+  
+  // Thumbs
+  const thumbsContainer = document.getElementById('modalThumbs');
+  thumbsContainer.innerHTML = item.imgs.map((imgUrl, idx) => `
+    <div class="modal-thumb ${idx === 0 ? 'active' : ''}" onclick="setModalMainImage('${imgUrl}', this)">
+      <img src="${imgUrl}" alt="Thumb ${idx + 1}"/>
+    </div>`).join('');
+    
+  // Dynamic color dropdown inside inquiry form
+  const colorDropdown = document.getElementById('enqColor');
+  colorDropdown.innerHTML = item.details.colors.map(col => `
+    <option value="${col}">${col}</option>`).join('');
+  
+  // Open modal
+  document.getElementById('detailsModal').classList.add('active');
+  document.body.style.overflow = 'hidden'; // lock background scrolling
+}
+
+function setModalMainImage(url, thumbEl) {
+  document.getElementById('modalMainImg').src = url;
+  document.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active'));
+  thumbEl.classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('detailsModal').classList.remove('active');
+  document.body.style.overflow = ''; // unlock scroll
+}
+
+// Close Modal when clicking background overlay
+document.getElementById('detailsModal').addEventListener('click', (e) => {
+  if (e.target.id === 'detailsModal') {
+    closeModal();
+  }
+});
+
+// Live Preview E-Card Update
+let activeTheme = 'theme-crimson-gold';
+
+function selectTheme(pillEl, themeClass) {
+  document.querySelectorAll('.color-pill').forEach(pill => pill.classList.remove('active'));
+  pillEl.classList.add('active');
+  
+  const liveCard = document.getElementById('liveCard');
+  liveCard.classList.remove('theme-crimson-gold', 'theme-pastel-peach', 'theme-royal-navy', 'theme-forest-gold');
+  liveCard.classList.add(themeClass);
+  activeTheme = themeClass;
+}
+
+function updateLiveCard() {
+  const bride = document.getElementById('inputBride').value || 'Bride';
+  const groom = document.getElementById('inputGroom').value || 'Groom';
+  const date = document.getElementById('inputDate').value || 'EVENT DATE';
+  const venue = document.getElementById('inputVenue').value || 'Venue Address, City';
+  
+  document.getElementById('cardBrideName').textContent = bride;
+  document.getElementById('cardGroomName').textContent = groom;
+  document.getElementById('cardDateVal').textContent = date;
+  document.getElementById('cardVenueVal').textContent = venue;
+  
+  // Font Selector
+  const fontStyle = document.getElementById('selectFont').value;
+  const liveCard = document.getElementById('liveCard');
+  liveCard.classList.remove('font-script', 'font-royal', 'font-modern');
+  liveCard.classList.add(fontStyle);
+  
+  // Subtle visual adjustments for different themes
+  const introEl = document.getElementById('cardIntroText');
+  const reqEl = document.getElementById('cardReqText');
+  
+  if (activeTheme === 'theme-pastel-peach') {
+    introEl.textContent = 'SAVE THE DATE';
+    reqEl.textContent = 'Are cordially invited to celebrate the union of their families';
+  } else {
+    introEl.textContent = 'Shree Ganeshay Namah';
+    reqEl.textContent = 'Request the pleasure of your company on the auspicious occasion of their wedding';
+  }
+}
+
+// Form Submission inside Details Modal
+function submitCardEnquiry() {
+  const name = document.getElementById('enqName').value.trim();
+  const phone = document.getElementById('enqPhone').value.trim();
+  const qty = document.getElementById('enqQuantity').value.trim();
+  const color = document.getElementById('enqColor').value;
+  
+  if (!name || !phone || !qty) {
+    alert('Please fill out all pricing inquiry fields.');
+    return;
+  }
+  
+  const item = invitations.find(p => p.id === selectedProductId);
+  const ref = 'SFC' + Date.now().toString().slice(-8).toUpperCase();
+  
+  const finalData = {
+    ref,
+    venueName: `Stationery: ${item.title}`,
+    venueLocation: `Color: ${color} | Format: ${item.type} | Qty: ${qty}`,
+    date: new Date().toISOString().split('T')[0],
+    guests: qty,
+    type: 'Wedding Cards Purchase',
+    name: name,
+    email: `${name.toLowerCase().replace(/\s+/g, '')}@example.com`,
+    phone: phone,
+    total: 'Inquiry Submitted'
+  };
+  
+  sessionStorage.setItem('confirmData', JSON.stringify(finalData));
+  closeModal();
+  window.location.href = 'confirmation.html';
+}
+
+// Visual Customizer Form Submission
+function submitCustomizedInquiry() {
+  const bride = document.getElementById('inputBride').value || 'Bride';
+  const groom = document.getElementById('inputGroom').value || 'Groom';
+  const date = document.getElementById('inputDate').value || 'Date';
+  const venue = document.getElementById('inputVenue').value || 'Venue';
+  
+  const fontStyle = document.getElementById('selectFont').value;
+  
+  const ref = 'SFE' + Date.now().toString().slice(-8).toUpperCase();
+  const finalData = {
+    ref,
+    venueName: `Interactive E-Card Design (${bride} & ${groom})`,
+    venueLocation: `Font: ${fontStyle} | Theme: ${activeTheme}`,
+    date: new Date().toISOString().split('T')[0],
+    guests: 1,
+    type: 'Custom Digital E-Card Preview',
+    name: `${bride} & ${groom}`,
+    email: 'custom.invite@sampada.in',
+    phone: '+91 99044 19544',
+    total: 'Design Inquiry Submitted'
+  };
+  
+  sessionStorage.setItem('confirmData', JSON.stringify(finalData));
+  window.location.href = 'confirmation.html';
+}
+
+// Initial Page Load
+window.addEventListener('DOMContentLoaded', () => {
+  renderInvitations(invitations);
+});
+</script>
+</body>
+</html>
