@@ -2629,3 +2629,95 @@ img {
   }
 }
 
+/* ===== REAL WEDDINGS SHOWCASE ===== */
+.real-weddings-section {
+  background: var(--bg-secondary);
+  border-top: 1px solid rgba(197, 160, 89, 0.1);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+}
+.real-weddings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+.wedding-story-card {
+  background: var(--white);
+  border: 1px solid rgba(197, 160, 89, 0.12);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+.wedding-story-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(31, 17, 19, 0.08);
+  border-color: var(--gold-dark);
+}
+.wedding-story-img {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+.wedding-story-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.wedding-story-card:hover .wedding-story-img img {
+  transform: scale(1.08);
+}
+.wedding-story-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--crimson);
+  color: var(--white);
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.wedding-story-content {
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.wedding-story-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.wedding-story-venue {
+  font-size: 13.5px;
+  color: var(--gold-dark);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.wedding-story-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(197, 160, 89, 0.15);
+}
+.wedding-story-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.wedding-story-meta-item strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
